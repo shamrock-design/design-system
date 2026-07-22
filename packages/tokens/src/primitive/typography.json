@@ -1,0 +1,47 @@
+{
+  "font": {
+    "family": {
+      "sans": {
+        "$type": "fontFamily",
+        "$value": "'Instrument Sans', -apple-system, system-ui, sans-serif",
+        "$description": "UI face. Themable."
+      },
+      "machine": {
+        "$type": "fontFamily",
+        "$value": "'Inter', 'Instrument Sans', -apple-system, system-ui, sans-serif",
+        "$description": "Machine-value face for timestamps, IDs, durations, counts. Themable."
+      }
+    },
+    "size": {
+      "$description": "Dense operational scale from the benchmark (fractional sizes are deliberate optical tuning).",
+      "micro": { "$type": "dimension", "$value": "10px" },
+      "caption": { "$type": "dimension", "$value": "11px" },
+      "meta": { "$type": "dimension", "$value": "12px" },
+      "body": { "$type": "dimension", "$value": "13px" },
+      "control": { "$type": "dimension", "$value": "14px" },
+      "lead": { "$type": "dimension", "$value": "15px" },
+      "h3": { "$type": "dimension", "$value": "18px" },
+      "kpi": { "$type": "dimension", "$value": "21px" },
+      "h2": { "$type": "dimension", "$value": "24px" },
+      "h1": { "$type": "dimension", "$value": "28px" }
+    },
+    "weight": {
+      "regular": { "$type": "fontWeight", "$value": "400" },
+      "medium": { "$type": "fontWeight", "$value": "500" },
+      "semibold": { "$type": "fontWeight", "$value": "600" },
+      "bold": { "$type": "fontWeight", "$value": "700" },
+      "black": { "$type": "fontWeight", "$value": "800" }
+    },
+    "tracking": {
+      "body": { "$type": "dimension", "$value": "-0.01em" },
+      "tight": { "$type": "dimension", "$value": "-0.016em" },
+      "tighter": { "$type": "dimension", "$value": "-0.02em" },
+      "brand": { "$type": "dimension", "$value": "-0.05em" },
+      "caps": { "$type": "dimension", "$value": "0.06em" }
+    },
+    "leading": {
+      "tight": { "$type": "number", "$value": "1.2" },
+      "base": { "$type": "number", "$value": "1.45" }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+/* Ambient brand atmosphere: blurred orbs behind frosted glass surfaces.
+   Orbs derive from the accent tokens, so the aurora re-tints per theme. */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--sh-surface-page);
+}
+
+.orb {
+  position: absolute;
+  border-radius: var(--sh-radius-circle);
+  filter: blur(150px);
+  opacity: 0.5;
+}
+
+.orbAccent {
+  width: 44vw;
+  height: 44vw;
+  top: -12vw;
+  left: -8vw;
+  background: var(--sh-color-accent-subtle-border);
+}
+
+.orbInfo {
+  width: 36vw;
+  height: 36vw;
+  bottom: -10vw;
+  right: -6vw;
+  background: var(--sh-color-status-info-bg);
+  opacity: 0.9;
+}
+
+.orbWarm {
+  width: 30vw;
+  height: 30vw;
+  top: 30%;
+  right: 18%;
+  background: var(--sh-color-accent-subtle-bg);
+  opacity: 0.8;
+}

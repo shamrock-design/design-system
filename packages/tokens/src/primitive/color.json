@@ -1,0 +1,84 @@
+{
+  "color": {
+    "green": {
+      "$description": "Client brand family ('clover' theme). Extracted verbatim from the benchmark apps. Never referenced by core semantic tokens.",
+      "100": { "$type": "color", "$value": "#EDFFCC" },
+      "300": { "$type": "color", "$value": "#82CC00" },
+      "500": { "$type": "color", "$value": "#76B900" },
+      "550": { "$type": "color", "$value": "#75B800" },
+      "600": { "$type": "color", "$value": "#629900" },
+      "700": { "$type": "color", "$value": "#5E9400" },
+      "800": { "$type": "color", "$value": "#507B04" }
+    },
+    "violet": {
+      "$description": "Internal brand family ('violet' theme), from Cognito/RapidX production apps.",
+      "100": { "$type": "color", "$value": "#F1EDFF" },
+      "200": { "$type": "color", "$value": "#EDE9FE" },
+      "300": { "$type": "color", "$value": "#C4B5FD" },
+      "500": { "$type": "color", "$value": "#6C5CE7" },
+      "600": { "$type": "color", "$value": "#5B4BD4" },
+      "700": { "$type": "color", "$value": "#4C3EB8" }
+    },
+    "ink": {
+      "$description": "Warm near-neutral text ramp, darkest to lightest (benchmark olive ramp, imperceptibly tinted).",
+      "1": { "$type": "color", "$value": "#1A1B18" },
+      "2": { "$type": "color", "$value": "#333531" },
+      "3": { "$type": "color", "$value": "#4E5049" },
+      "4": { "$type": "color", "$value": "#676A62" },
+      "5": { "$type": "color", "$value": "#808379" },
+      "6": { "$type": "color", "$value": "#9A9D95" },
+      "7": { "$type": "color", "$value": "#B3B6AF" }
+    },
+    "hair": {
+      "$description": "Hairline border tints. De-saturated from the benchmark sage set so the core stays brand-neutral (ADR-0004).",
+      "1": { "$type": "color", "$value": "#C7CCC1" },
+      "2": { "$type": "color", "$value": "#DADED4" },
+      "3": { "$type": "color", "$value": "#E6E7E4" },
+      "4": { "$type": "color", "$value": "#BFC2BA" }
+    },
+    "glass": {
+      "$description": "Translucent white surface ramp (glassmorphism canon).",
+      "1": { "$type": "color", "$value": "rgba(255, 255, 255, 0.5)" },
+      "2": { "$type": "color", "$value": "rgba(255, 255, 255, 0.68)" },
+      "3": { "$type": "color", "$value": "rgba(255, 255, 255, 0.4)" },
+      "4": { "$type": "color", "$value": "rgba(255, 255, 255, 0.84)" }
+    },
+    "warm-white": { "$type": "color", "$value": "#F4F5F1" },
+    "white": { "$type": "color", "$value": "#FFFFFF" },
+    "red": {
+      "$description": "Critical status triad.",
+      "base": { "$type": "color", "$value": "#F04438" },
+      "bg": { "$type": "color", "$value": "#FDE9E7" },
+      "text": { "$type": "color", "$value": "#BF0000" }
+    },
+    "amber": {
+      "$description": "Warning status triad.",
+      "base": { "$type": "color", "$value": "#F79009" },
+      "bg": { "$type": "color", "$value": "#FBEFD3" },
+      "text": { "$type": "color", "$value": "#AA5A24" }
+    },
+    "emerald": {
+      "$description": "Success/healthy status triad (--grn in the benchmark; deliberately distinct from brand green).",
+      "base": { "$type": "color", "$value": "#1EAE53" },
+      "bg": { "$type": "color", "$value": "#E9FBF0" },
+      "text": { "$type": "color", "$value": "#16833E" }
+    },
+    "blue": {
+      "$description": "Info/running status triad.",
+      "base": { "$type": "color", "$value": "#3895FA" },
+      "bg": { "$type": "color", "$value": "#E6F2FE" },
+      "text": { "$type": "color", "$value": "#064C93" }
+    },
+    "slate": {
+      "$description": "Cool blueprint palette for authoring/canvas contexts (the run/model firewall). Tokenizes the previously hardcoded model-canvas hex set.",
+      "100": { "$type": "color", "$value": "#EDF2F6" },
+      "200": { "$type": "color", "$value": "#DBE5EE" },
+      "300": { "$type": "color", "$value": "#CCDAE6" },
+      "400": { "$type": "color", "$value": "#B7C7D4" },
+      "500": { "$type": "color", "$value": "#9FB4C4" },
+      "600": { "$type": "color", "$value": "#7E94A6" },
+      "700": { "$type": "color", "$value": "#54708A" },
+      "800": { "$type": "color", "$value": "#3E556A" }
+    }
+  }
+}

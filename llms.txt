@@ -1,0 +1,20 @@
+# Shamrock Design System
+
+> Token-driven, color-agnostic design system: colorless semantic core (--sh-* CSS vars) + brand themes (clover green, violet, client themes). React components on CSS Modules. Sharp corners, glassmorphism, dense operational type, canonical 7-value status enum.
+
+If you are generating UI for an app that consumes Shamrock: read docs/consuming/for-ai-agents.md — it contains the hard rules and page skeletons. The same file ships inside the @shamrock/ui package as llms.txt.
+
+## Docs
+
+- [For AI agents (consumption rules)](docs/consuming/for-ai-agents.md)
+- [Getting started](docs/consuming/getting-started.md)
+- [Theming](docs/consuming/theming.md)
+- [Status vocabulary](docs/guidelines/status-vocabulary.md)
+- [Color usage](docs/guidelines/color-usage.md)
+- [Typography](docs/guidelines/typography.md)
+- [Date/time formats](docs/guidelines/date-time-format.md)
+- [Elevation](docs/guidelines/elevation.md)
+- [Component spec template](docs/component-spec-template.md)
+- [Figma sync playbook](docs/figma-sync.md)
+- [Contributing](CONTRIBUTING.md)
+- [Decisions (ADRs)](docs/adr/)

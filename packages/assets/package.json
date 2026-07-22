@@ -1,0 +1,26 @@
+{
+  "name": "@shamrock/assets",
+  "version": "0.0.1",
+  "description": "Shamrock shared assets — illustrations, Lottie, Rive, gifs, raster. Versioned source of truth; consumers update via dependency bump.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "files": ["illustrations", "lottie", "rive", "gifs", "raster", "manifest.json", "manifest.d.ts"],
+  "exports": {
+    ".": {
+      "types": "./manifest.d.ts",
+      "default": "./manifest.json"
+    },
+    "./illustrations/*": "./illustrations/*",
+    "./lottie/*": "./lottie/*",
+    "./rive/*": "./rive/*",
+    "./gifs/*": "./gifs/*",
+    "./raster/*": "./raster/*"
+  },
+  "scripts": {
+    "build": "node scripts/build-manifest.mjs",
+    "test": "node scripts/build-manifest.mjs --check"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}

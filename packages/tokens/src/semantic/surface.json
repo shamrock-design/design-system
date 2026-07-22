@@ -1,0 +1,28 @@
+{
+  "surface": {
+    "page": {
+      "$type": "color",
+      "$value": "{color.warm-white}",
+      "$description": "App background behind the aurora layer. Light-only by canon (ADR-0005)."
+    },
+    "panel": { "$type": "color", "$value": "{color.glass.1}" },
+    "card": { "$type": "color", "$value": "{color.glass.2}" },
+    "faint": { "$type": "color", "$value": "{color.glass.3}" },
+    "overlay": {
+      "$type": "color",
+      "$value": "{color.glass.4}",
+      "$description": "Popovers, dropdowns, elevated glass."
+    },
+    "solid": { "$type": "color", "$value": "{color.white}" },
+    "scrim": {
+      "$type": "color",
+      "$value": "rgba(26, 27, 24, 0.28)",
+      "$description": "Behind modals/drawers."
+    },
+    "canvas": {
+      "$type": "color",
+      "$value": "{color.slate.100}",
+      "$description": "Authoring/model-editor context (the run/model firewall — cool blueprint mode)."
+    }
+  }
+}

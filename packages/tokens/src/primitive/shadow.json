@@ -1,0 +1,9 @@
+{
+  "shadow": {
+    "$description": "Long, soft, warm-ink-tinted shadows (neutralized from the benchmark's green-tinted rgba(40,55,7) — ADR-0004). Fixed canon, not themable.",
+    "1": { "$type": "shadow", "$value": "0 8px 20px -12px rgba(28, 30, 22, 0.35)" },
+    "2": { "$type": "shadow", "$value": "0 18px 40px -22px rgba(28, 30, 22, 0.4)" },
+    "3": { "$type": "shadow", "$value": "0 24px 60px -24px rgba(28, 30, 22, 0.45)" },
+    "drawer": { "$type": "shadow", "$value": "-30px 0 60px -30px rgba(28, 30, 22, 0.4)" }
+  }
+}

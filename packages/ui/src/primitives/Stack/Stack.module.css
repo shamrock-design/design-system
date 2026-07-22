@@ -1,0 +1,19 @@
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sh-stack-gap, var(--sh-space-4));
+}
+
+.inline {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sh-stack-gap, var(--sh-space-4));
+}
+
+.grid {
+  display: grid;
+  gap: var(--sh-stack-gap, var(--sh-space-6));
+  grid-template-columns: repeat(auto-fill, minmax(var(--sh-grid-min, 240px), 1fr));
+}

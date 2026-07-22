@@ -1,0 +1,23 @@
+{
+  "$description": "Internal violet theme (Cognito/RapidX brand). Also swaps the UI face to Inter, proving font theming. Themes may ONLY override color.accent.* and font.* (CI-enforced).",
+  "color": {
+    "accent": {
+      "base": { "$type": "color", "$value": "{color.violet.500}" },
+      "emphasis": { "$type": "color", "$value": "{color.violet.600}" },
+      "strong": { "$type": "color", "$value": "{color.violet.700}" },
+      "subtle-bg": { "$type": "color", "$value": "{color.violet.200}" },
+      "subtle-text": { "$type": "color", "$value": "{color.violet.600}" },
+      "subtle-border": { "$type": "color", "$value": "{color.violet.300}" },
+      "on-accent": { "$type": "color", "$value": "{color.white}" },
+      "focus-ring": { "$type": "color", "$value": "{color.violet.200}" }
+    }
+  },
+  "font": {
+    "family": {
+      "sans": {
+        "$type": "fontFamily",
+        "$value": "'Inter', -apple-system, system-ui, sans-serif"
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "color": {
+    "accent": {
+      "$description": "THE brand slot. Colorless core maps it to near-neutral ink — a fully monochrome UI ships by default. Themes remap this group (and only this group + fonts).",
+      "base": { "$type": "color", "$value": "{color.ink.1}" },
+      "emphasis": { "$type": "color", "$value": "{color.ink.2}" },
+      "strong": { "$type": "color", "$value": "{color.ink.3}" },
+      "subtle-bg": { "$type": "color", "$value": "{color.hair.3}" },
+      "subtle-text": { "$type": "color", "$value": "{color.ink.3}" },
+      "subtle-border": { "$type": "color", "$value": "{color.ink.7}" },
+      "on-accent": { "$type": "color", "$value": "{color.white}" },
+      "focus-ring": { "$type": "color", "$value": "{color.hair.4}" }
+    },
+    "text": {
+      "primary": { "$type": "color", "$value": "{color.ink.1}" },
+      "secondary": { "$type": "color", "$value": "{color.ink.3}" },
+      "tertiary": { "$type": "color", "$value": "{color.ink.4}" },
+      "subtle": { "$type": "color", "$value": "{color.ink.5}" },
+      "faint": { "$type": "color", "$value": "{color.ink.6}" },
+      "disabled": { "$type": "color", "$value": "{color.ink.7}" },
+      "machine": {
+        "$type": "color",
+        "$value": "{color.ink.4}",
+        "$description": "Pairs with font.family.machine for timestamps/IDs/durations."
+      },
+      "inverse": { "$type": "color", "$value": "{color.white}" }
+    },
+    "border": {
+      "hairline": { "$type": "color", "$value": "{color.hair.2}" },
+      "hairline-strong": { "$type": "color", "$value": "{color.hair.1}" },
+      "divider": { "$type": "color", "$value": "{color.hair.3}" },
+      "interactive": { "$type": "color", "$value": "{color.hair.4}" }
+    },
+    "status": {
+      "$description": "Theme-invariant. Status is signal, not brand — 'color is a scarce, earned resource'. Always pair with a text label (dot + text), never color alone.",
+      "success": {
+        "base": { "$type": "color", "$value": "{color.emerald.base}" },
+        "bg": { "$type": "color", "$value": "{color.emerald.bg}" },
+        "text": { "$type": "color", "$value": "{color.emerald.text}" }
+      },
+      "warning": {
+        "base": { "$type": "color", "$value": "{color.amber.base}" },
+        "bg": { "$type": "color", "$value": "{color.amber.bg}" },
+        "text": { "$type": "color", "$value": "{color.amber.text}" }
+      },
+      "critical": {
+        "base": { "$type": "color", "$value": "{color.red.base}" },
+        "bg": { "$type": "color", "$value": "{color.red.bg}" },
+        "text": { "$type": "color", "$value": "{color.red.text}" }
+      },
+      "info": {
+        "base": { "$type": "color", "$value": "{color.blue.base}" },
+        "bg": { "$type": "color", "$value": "{color.blue.bg}" },
+        "text": { "$type": "color", "$value": "{color.blue.text}" }
+      },
+      "running": {
+        "base": { "$type": "color", "$value": "{color.blue.base}" },
+        "bg": { "$type": "color", "$value": "{color.blue.bg}" },
+        "text": { "$type": "color", "$value": "{color.blue.text}" }
+      },
+      "pending": {
+        "base": { "$type": "color", "$value": "{color.ink.6}" },
+        "bg": { "$type": "color", "$value": "{color.hair.3}" },
+        "text": { "$type": "color", "$value": "{color.ink.4}" }
+      },
+      "neutral": {
+        "base": { "$type": "color", "$value": "{color.ink.5}" },
+        "bg": { "$type": "color", "$value": "{color.hair.3}" },
+        "text": { "$type": "color", "$value": "{color.ink.3}" }
+      }
+    }
+  }
+}

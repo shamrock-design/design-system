@@ -1,0 +1,10 @@
+{
+  "assets": [
+    {
+      "path": "illustrations/empty-states/empty-search-results.svg",
+      "category": "illustrations",
+      "bytes": 356,
+      "sha256": "f194ef2b70242edc"
+    }
+  ]
+}

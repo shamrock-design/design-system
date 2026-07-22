@@ -1,0 +1,4 @@
+{
+  "extends": "@shamrock/tsconfig/base.json",
+  "include": ["dist/js/tokens.d.ts"]
+}

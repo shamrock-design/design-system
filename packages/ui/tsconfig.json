@@ -1,0 +1,7 @@
+{
+  "extends": "@shamrock/tsconfig/react-library.json",
+  "compilerOptions": {
+    "types": ["vitest/globals"]
+  },
+  "include": ["src", "css-modules.d.ts"]
+}

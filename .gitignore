@@ -1,0 +1,20 @@
+# deps / builds
+node_modules/
+dist/
+storybook-static/
+.next/
+.turbo/
+*.tsbuildinfo
+
+# reference material (huge, contains nested git repos) — not part of the system
+refs/
+extract-frames.swift
+
+# os / editor
+.DS_Store
+.idea/
+.vscode/
+
+# env
+.env
+.env.*

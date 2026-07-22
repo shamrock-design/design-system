@@ -1,0 +1,15 @@
+{
+  "$description": "Client green theme — the benchmark apps' accent, verbatim. Themes may ONLY override color.accent.* and font.* (CI-enforced).",
+  "color": {
+    "accent": {
+      "base": { "$type": "color", "$value": "{color.green.500}" },
+      "emphasis": { "$type": "color", "$value": "{color.green.700}" },
+      "strong": { "$type": "color", "$value": "{color.green.800}" },
+      "subtle-bg": { "$type": "color", "$value": "{color.green.100}" },
+      "subtle-text": { "$type": "color", "$value": "{color.green.600}" },
+      "subtle-border": { "$type": "color", "$value": "{color.green.300}" },
+      "on-accent": { "$type": "color", "$value": "{color.ink.1}" },
+      "focus-ring": { "$type": "color", "$value": "{color.green.100}" }
+    }
+  }
+}

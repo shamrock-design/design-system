@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # build runs the theme-contract check, icon lint, and asset manifest check
+      - run: pnpm turbo build test typecheck
+      - name: Package install smoke (tarball exports check)
+        run: |
+          mkdir -p /tmp/pack && cd /tmp/pack
+          pnpm --dir "$GITHUB_WORKSPACE/packages/tokens" pack --pack-destination /tmp/pack
+          pnpm --dir "$GITHUB_WORKSPACE/packages/ui" pack --pack-destination /tmp/pack
+          pnpm --dir "$GITHUB_WORKSPACE/packages/icons" pack --pack-destination /tmp/pack
+          npm init -y
+          npm install ./*.tgz react react-dom
+          node -e "
+            const tokens = require('@shamrock/tokens');
+            if (!tokens.tokens['color.accent.base']) throw new Error('tokens export broken');
+            require.resolve('@shamrock/tokens/css/core.css');
+            require.resolve('@shamrock/ui/styles.css');
+            require.resolve('@shamrock/icons');
+            console.log('tarball exports OK');
+          "

@@ -1,0 +1,31 @@
+{
+  "name": "@shamrock/tokens",
+  "version": "0.0.1",
+  "description": "Shamrock design tokens — colorless semantic core + brand themes (CSS custom properties + typed JS)",
+  "license": "UNLICENSED",
+  "type": "module",
+  "sideEffects": ["*.css"],
+  "files": ["dist"],
+  "exports": {
+    ".": {
+      "types": "./dist/js/tokens.d.ts",
+      "default": "./dist/js/tokens.js"
+    },
+    "./css/core.css": "./dist/css/core.css",
+    "./css/theme-clover.css": "./dist/css/theme-clover.css",
+    "./css/theme-violet.css": "./dist/css/theme-violet.css",
+    "./css/*": "./dist/css/*"
+  },
+  "scripts": {
+    "build": "node scripts/check-theme-contract.mjs && node scripts/build.mjs",
+    "test": "node scripts/check-theme-contract.mjs",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@shamrock/tsconfig": "workspace:*",
+    "typescript": "^5.7.3"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "@shamrock/icons",
+  "version": "0.0.1",
+  "description": "Shamrock icon set — hand-authored 24×24 line icons (currentColor, 1.5px stroke) as React components + raw SVG",
+  "license": "UNLICENSED",
+  "type": "module",
+  "files": ["dist", "svg"],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./svg/*": "./svg/*"
+  },
+  "scripts": {
+    "build": "node scripts/build-icons.mjs && tsup src/index.tsx --format esm,cjs --dts --clean --external react",
+    "test": "node scripts/build-icons.mjs --check",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@shamrock/tsconfig": "workspace:*",
+    "@types/react": "^19.0.8",
+    "react": "^19.0.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}

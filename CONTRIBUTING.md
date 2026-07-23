@@ -14,7 +14,7 @@
 1. Branch from `main`.
 2. Make the change. Any change under `packages/*` requires `pnpm changeset` (pick bump level, write a human changelog line).
 3. PR → CI must pass (build, tests, typecheck, theme contract, icon/asset lint, Storybook build).
-4. Merge → the Changesets action opens/updates a release PR → merging that publishes to GitHub Packages and deploys Storybook.
+4. Merge → the Changesets action opens/updates a release PR → merging that publishes to GitHub Packages. Storybook deploys via Vercel's Git integration on every `main` push (project root: `apps/workshop`, config in `apps/workshop/vercel.json`).
 
 `tokens`, `ui`, `icons` are version-linked (majors move together). `assets` versions independently.
 

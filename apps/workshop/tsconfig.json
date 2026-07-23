@@ -1,4 +1,4 @@
 {
-  "extends": "@shamrock/tsconfig/react-library.json",
+  "extends": "@shamrock-design/tsconfig/react-library.json",
   "include": ["stories", ".storybook"]
 }

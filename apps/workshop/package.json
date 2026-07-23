@@ -1,5 +1,5 @@
 {
-  "name": "@shamrock/workshop",
+  "name": "@shamrock-design/workshop",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -9,14 +9,14 @@
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@shamrock/icons": "workspace:*",
-    "@shamrock/tokens": "workspace:*",
-    "@shamrock/ui": "workspace:*",
+    "@shamrock-design/icons": "workspace:*",
+    "@shamrock-design/tokens": "workspace:*",
+    "@shamrock-design/ui": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@shamrock/tsconfig": "workspace:*",
+    "@shamrock-design/tsconfig": "workspace:*",
     "@storybook/addon-a11y": "^9.0.0",
     "@storybook/addon-docs": "^9.0.0",
     "@storybook/addon-themes": "^9.0.0",

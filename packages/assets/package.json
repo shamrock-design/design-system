@@ -1,5 +1,5 @@
 {
-  "name": "@shamrock/assets",
+  "name": "@shamrock-design/assets",
   "version": "0.0.1",
   "description": "Shamrock shared assets — illustrations, Lottie, Rive, gifs, raster. Versioned source of truth; consumers update via dependency bump.",
   "license": "UNLICENSED",

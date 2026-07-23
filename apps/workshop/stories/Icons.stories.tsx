@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Icon, ICON_NAMES } from "@shamrock/icons";
-import { Grid, Stack, Text } from "@shamrock/ui";
+import { Icon, ICON_NAMES } from "@shamrock-design/icons";
+import { Grid, Stack, Text } from "@shamrock-design/ui";
 
 const meta = {
   title: "Foundations/Icons",

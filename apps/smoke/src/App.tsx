@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Aurora, Grid, Inline, Stack, Text, type Status, STATUSES, STATUS_LABELS } from "@shamrock/ui";
-import { Icon } from "@shamrock/icons";
+import { Aurora, Grid, Inline, Stack, Text, type Status, STATUSES, STATUS_LABELS } from "@shamrock-design/ui";
+import { Icon } from "@shamrock-design/icons";
 
 const THEMES = ["neutral", "clover", "violet"] as const;
 
@@ -40,7 +40,7 @@ export function App() {
           <Stack gap={1}>
             <Text variant="h1">Shamrock smoke test</Text>
             <Text variant="body" tone="secondary">
-              Consumes @shamrock/tokens, ui, and icons exactly like a product app would.
+              Consumes @shamrock-design/tokens, ui, and icons exactly like a product app would.
             </Text>
           </Stack>
           <Inline gap={2}>

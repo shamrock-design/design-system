@@ -11,4 +11,4 @@ One component (Phase 2: `<EmptyState>`), one copy formula. No more "Not yet inst
 | Filter/search returned nothing | echo the query + reset | "No jobs match 'MDMR'. Clear the search to see all 104 jobs." [Clear search] |
 | Cell-level absence | `—` (em dash), `pending` styling | — |
 
-Rules: sentence case, period at end, no exclamation marks, no "Oops". Illustration from `@shamrock/assets/illustrations/empty-states/` (optional, small). Never leave a bare region — absence is information.
+Rules: sentence case, period at end, no exclamation marks, no "Oops". Illustration from `@shamrock-design/assets/illustrations/empty-states/` (optional, small). Never leave a bare region — absence is information.

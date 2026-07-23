@@ -27,10 +27,10 @@ jobs:
           npm init -y
           npm install ./*.tgz react react-dom
           node -e "
-            const tokens = require('@shamrock/tokens');
+            const tokens = require('@shamrock-design/tokens');
             if (!tokens.tokens['color.accent.base']) throw new Error('tokens export broken');
-            require.resolve('@shamrock/tokens/css/core.css');
-            require.resolve('@shamrock/ui/styles.css');
-            require.resolve('@shamrock/icons');
+            require.resolve('@shamrock-design/tokens/css/core.css');
+            require.resolve('@shamrock-design/ui/styles.css');
+            require.resolve('@shamrock-design/icons');
             console.log('tarball exports OK');
           "

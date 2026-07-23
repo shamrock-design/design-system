@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { tokens } from "@shamrock/tokens";
-import { Stack, Inline, Text } from "@shamrock/ui";
+import { tokens } from "@shamrock-design/tokens";
+import { Stack, Inline, Text } from "@shamrock-design/ui";
 
 const meta = {
   title: "Foundations/Tokens",

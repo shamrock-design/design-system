@@ -1,5 +1,5 @@
 {
-  "name": "@shamrock/tokens",
+  "name": "@shamrock-design/tokens",
   "version": "0.0.1",
   "description": "Shamrock design tokens — colorless semantic core + brand themes (CSS custom properties + typed JS)",
   "license": "UNLICENSED",
@@ -22,7 +22,7 @@
     "typecheck": "tsc -p tsconfig.json"
   },
   "devDependencies": {
-    "@shamrock/tsconfig": "workspace:*",
+    "@shamrock-design/tsconfig": "workspace:*",
     "typescript": "^5.7.3"
   },
   "publishConfig": {

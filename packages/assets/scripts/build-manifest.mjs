@@ -71,7 +71,7 @@ const manifestPath = join(root, "manifest.json");
 if (checkOnly) {
   const current = existsSync(manifestPath) ? readFileSync(manifestPath, "utf8") : "";
   if (current !== manifest) {
-    console.error("✗ manifest.json is stale — run `pnpm --filter @shamrock/assets build` and commit it");
+    console.error("✗ manifest.json is stale — run `pnpm --filter @shamrock-design/assets build` and commit it");
     process.exit(1);
   }
   console.log(`✓ ${entries.length} assets valid, manifest up to date`);

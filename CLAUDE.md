@@ -25,7 +25,7 @@ Token-driven, **color-agnostic** design system for the Shamrock/3Frames ecosyste
 1. **Radius is 0.** Sharp corners everywhere. Only status dots/orbs (`--sh-radius-circle`) and count pills (`--sh-radius-pill`) may round.
 2. **The core is colorless.** Components reference ONLY semantic tokens (`--sh-color-accent-*`, `--sh-color-text-*`, `--sh-surface-*`, …). Never a brand hex, never `--sh-green-*`/`--sh-violet-*` (those don't exist in core.css by design).
 3. **Themes may only set `color.accent.*` and `font.*`** — CI-enforced. Never add radius/shadow/spacing to a theme file.
-4. **Status is signal, not brand.** Status colors are theme-invariant and come from the enum in `@shamrock/ui` (`neutral|info|success|warning|critical|pending|running`). Always dot + text label, never color alone.
+4. **Status is signal, not brand.** Status colors are theme-invariant and come from the enum in `@shamrock-design/ui` (`neutral|info|success|warning|critical|pending|running`). Always dot + text label, never color alone.
 5. **Color is a scarce, earned resource.** Nominal states render calm/gray; saturated color = exception. A screen that's colorful when everything is fine is wrong.
 6. **Machine values** (timestamps, IDs, durations, counts) use `Text variant="machine"` / `--sh-font-family-machine`.
 7. **No naked numbers.** Metrics always render against a baseline ("+35 min vs plan").

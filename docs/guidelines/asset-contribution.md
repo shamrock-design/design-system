@@ -16,4 +16,4 @@ Assets live in `packages/assets/<category>/` and ship to every app as a versione
 ## Icons (separate package)
 `packages/icons/svg/` — 24×24 grid, 1.5px stroke, `currentColor` only, kebab-case filename. The build **rejects** hardcoded colors and wrong viewBoxes. Match the existing line style (round caps/joins).
 
-After merge, run `pnpm --filter @shamrock/assets build` (or let CI) to regenerate `manifest.json` — apps discover assets through it.
+After merge, run `pnpm --filter @shamrock-design/assets build` (or let CI) to regenerate `manifest.json` — apps discover assets through it.

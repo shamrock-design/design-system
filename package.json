@@ -11,7 +11,7 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
-    "storybook": "pnpm --filter @shamrock/workshop storybook",
+    "storybook": "pnpm --filter @shamrock-design/workshop storybook",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "turbo run build && changeset publish"

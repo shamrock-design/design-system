@@ -4,7 +4,7 @@ One canonical enum for every badge, tag, table cell, timeline node, and chart ac
 
 `neutral · info · success · warning · critical · pending · running`
 
-Exported from `@shamrock/ui` (`STATUSES`, `STATUS_LABELS`, `mapLegacyStatus`). Colors come from `--sh-color-status-<name>-{base,bg,text}` and are **theme-invariant**.
+Exported from `@shamrock-design/ui` (`STATUSES`, `STATUS_LABELS`, `mapLegacyStatus`). Colors come from `--sh-color-status-<name>-{base,bg,text}` and are **theme-invariant**.
 
 ## Legacy mapping (production apps → canon)
 

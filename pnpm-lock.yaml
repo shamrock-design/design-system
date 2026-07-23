@@ -20,13 +20,13 @@ importers:
 
   apps/smoke:
     dependencies:
-      '@shamrock/icons':
+      '@shamrock-design/icons':
         specifier: workspace:*
         version: link:../../packages/icons
-      '@shamrock/tokens':
+      '@shamrock-design/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
-      '@shamrock/ui':
+      '@shamrock-design/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       react:
@@ -36,7 +36,7 @@ importers:
         specifier: ^19.0.0
         version: 19.2.8(react@19.2.8)
     devDependencies:
-      '@shamrock/tsconfig':
+      '@shamrock-design/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/tsconfig
       '@types/react':
@@ -57,13 +57,13 @@ importers:
 
   apps/workshop:
     dependencies:
-      '@shamrock/icons':
+      '@shamrock-design/icons':
         specifier: workspace:*
         version: link:../../packages/icons
-      '@shamrock/tokens':
+      '@shamrock-design/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
-      '@shamrock/ui':
+      '@shamrock-design/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       react:
@@ -73,7 +73,7 @@ importers:
         specifier: ^19.0.0
         version: 19.2.8(react@19.2.8)
     devDependencies:
-      '@shamrock/tsconfig':
+      '@shamrock-design/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/tsconfig
       '@storybook/addon-a11y':
@@ -108,7 +108,7 @@ importers:
 
   packages/icons:
     devDependencies:
-      '@shamrock/tsconfig':
+      '@shamrock-design/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/tsconfig
       '@types/react':
@@ -126,7 +126,7 @@ importers:
 
   packages/tokens:
     devDependencies:
-      '@shamrock/tsconfig':
+      '@shamrock-design/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/tsconfig
       typescript:
@@ -135,11 +135,11 @@ importers:
 
   packages/ui:
     dependencies:
-      '@shamrock/tokens':
+      '@shamrock-design/tokens':
         specifier: workspace:*
         version: link:../tokens
     devDependencies:
-      '@shamrock/tsconfig':
+      '@shamrock-design/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/tsconfig
       '@types/react':

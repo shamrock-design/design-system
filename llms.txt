@@ -2,7 +2,7 @@
 
 > Token-driven, color-agnostic design system: colorless semantic core (--sh-* CSS vars) + brand themes (clover green, violet, client themes). React components on CSS Modules. Sharp corners, glassmorphism, dense operational type, canonical 7-value status enum.
 
-If you are generating UI for an app that consumes Shamrock: read docs/consuming/for-ai-agents.md — it contains the hard rules and page skeletons. The same file ships inside the @shamrock/ui package as llms.txt.
+If you are generating UI for an app that consumes Shamrock: read docs/consuming/for-ai-agents.md — it contains the hard rules and page skeletons. The same file ships inside the @shamrock-design/ui package as llms.txt.
 
 ## Docs
 

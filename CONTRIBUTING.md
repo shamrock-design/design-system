@@ -4,7 +4,7 @@
 
 - Node ≥ 20, pnpm 9 (`corepack enable pnpm`).
 - `pnpm install`, then `pnpm turbo build`.
-- To install published `@shamrock/*` packages elsewhere you need a GitHub PAT with `read:packages` in `~/.npmrc`:
+- To install published `@shamrock-design/*` packages elsewhere you need a GitHub PAT with `read:packages` in `~/.npmrc`:
   ```
   //npm.pkg.github.com/:_authToken=YOUR_TOKEN
   ```

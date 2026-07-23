@@ -8,7 +8,7 @@ No Figma work. Tokens/components stabilize in code first.
 ## Phase B (after the first component wave)
 Designers rebuild the Figma library from the coded system:
 - Figma **Variables** named identically to DTCG paths: `color/accent/base`, `color/status/success/bg`, `space/4`, `font/size/body` … (slash-separated mirror of `packages/tokens/src`).
-- One Figma component per `@shamrock/ui` component, variants matching the props enum (e.g. Button: variant × size × state).
+- One Figma component per `@shamrock-design/ui` component, variants matching the props enum (e.g. Button: variant × size × state).
 - Name parity is the entire trick — it makes Figma↔code diffing mechanical.
 
 ## Phase C (steady state) — the sync session

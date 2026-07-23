@@ -10,15 +10,15 @@ Authenticate to GitHub Packages once (`~/.npmrc`):
 ```
 
 ```bash
-pnpm add @shamrock/tokens @shamrock/ui @shamrock/icons
+pnpm add @shamrock-design/tokens @shamrock-design/ui @shamrock-design/icons
 ```
 
 ## React app
 
 ```tsx
-import "@shamrock/tokens/css/core.css";
-import "@shamrock/tokens/css/theme-clover.css";
-import "@shamrock/ui/styles.css";
+import "@shamrock-design/tokens/css/core.css";
+import "@shamrock-design/tokens/css/theme-clover.css";
+import "@shamrock-design/ui/styles.css";
 ```
 
 Set the theme on the root: `<html data-theme="clover">`. Load fonts (Instrument Sans + Inter):
@@ -32,17 +32,17 @@ Set the theme on the root: `<html data-theme="clover">`. Load fonts (Instrument 
 Link the token CSS directly — every `--sh-*` variable is available; style your markup with them:
 
 ```html
-<link rel="stylesheet" href="node_modules/@shamrock/tokens/dist/css/core.css" />
-<link rel="stylesheet" href="node_modules/@shamrock/tokens/dist/css/theme-clover.css" />
+<link rel="stylesheet" href="node_modules/@shamrock-design/tokens/dist/css/core.css" />
+<link rel="stylesheet" href="node_modules/@shamrock-design/tokens/dist/css/theme-clover.css" />
 <html data-theme="clover">
 ```
 
-Raw icons: `@shamrock/icons/svg/<name>.svg`. Assets: `@shamrock/assets/<category>/<file>`.
+Raw icons: `@shamrock-design/icons/svg/<name>.svg`. Assets: `@shamrock-design/assets/<category>/<file>`.
 
 ## Staying up to date
 
 Updates arrive as dependency bumps (semver + changelogs). Recommended Renovate rule:
 
 ```json
-{ "packageRules": [{ "matchPackagePrefixes": ["@shamrock/"], "groupName": "shamrock design system", "schedule": ["before 9am on monday"] }] }
+{ "packageRules": [{ "matchPackagePrefixes": ["@shamrock-design/"], "groupName": "shamrock design system", "schedule": ["before 9am on monday"] }] }
 ```

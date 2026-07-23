@@ -1,4 +1,4 @@
 {
-  "extends": "@shamrock/tsconfig/base.json",
+  "extends": "@shamrock-design/tsconfig/base.json",
   "include": ["dist/js/tokens.d.ts"]
 }

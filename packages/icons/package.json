@@ -1,5 +1,5 @@
 {
-  "name": "@shamrock/icons",
+  "name": "@shamrock-design/icons",
   "version": "0.0.1",
   "description": "Shamrock icon set — hand-authored 24×24 line icons (currentColor, 1.5px stroke) as React components + raw SVG",
   "license": "UNLICENSED",
@@ -25,7 +25,7 @@
     "react": ">=18"
   },
   "devDependencies": {
-    "@shamrock/tsconfig": "workspace:*",
+    "@shamrock-design/tsconfig": "workspace:*",
     "@types/react": "^19.0.8",
     "react": "^19.0.0",
     "tsup": "^8.3.5",

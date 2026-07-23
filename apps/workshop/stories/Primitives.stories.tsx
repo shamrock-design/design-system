@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Aurora, Grid, Inline, Stack, Text } from "@shamrock/ui";
+import { Aurora, Grid, Inline, Stack, Text } from "@shamrock-design/ui";
 
 const meta = {
   title: "Primitives/Layout",

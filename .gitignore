@@ -7,7 +7,7 @@ storybook-static/
 *.tsbuildinfo
 
 # reference material (huge, contains nested git repos) — not part of the system
-refs/
+/refs/
 extract-frames.swift
 
 # os / editor

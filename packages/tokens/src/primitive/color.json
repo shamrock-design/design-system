@@ -69,6 +69,22 @@
       "bg": { "$type": "color", "$value": "#E6F2FE" },
       "text": { "$type": "color", "$value": "#064C93" }
     },
+    "dataviz": {
+      "$description": "Chart series hues, CVD-validated (dataviz six-checks, light+dark) 2026-07-24. Fixed assignment order, never cycled. Theme-invariant.",
+      "blue": { "$type": "color", "$value": "#2F6BDE" },
+      "teal": { "$type": "color", "$value": "#0E9384" },
+      "ochre": { "$type": "color", "$value": "#B26A00" },
+      "magenta": { "$type": "color", "$value": "#C13D8F" },
+      "rust": { "$type": "color", "$value": "#A8542A" },
+      "seq": {
+        "$description": "Sequential ramp (single blue hue, light to dark, monotonic lightness).",
+        "1": { "$type": "color", "$value": "#DBE7FB" },
+        "2": { "$type": "color", "$value": "#A9C4F2" },
+        "3": { "$type": "color", "$value": "#6F97E6" },
+        "4": { "$type": "color", "$value": "#3B6FD4" },
+        "5": { "$type": "color", "$value": "#24509E" }
+      }
+    },
     "slate": {
       "$description": "Cool blueprint palette for authoring/canvas contexts (the run/model firewall). Tokenizes the previously hardcoded model-canvas hex set.",
       "100": { "$type": "color", "$value": "#EDF2F6" },

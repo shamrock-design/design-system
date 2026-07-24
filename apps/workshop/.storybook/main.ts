@@ -5,6 +5,7 @@ const config: StorybookConfig = {
     "../stories/**/*.mdx",
     "../stories/**/*.stories.@(ts|tsx)",
     "../../../packages/ui/src/**/*.stories.@(ts|tsx)",
+    "../../../packages/charts/src/**/*.stories.@(ts|tsx)",
   ],
   addons: ["@storybook/addon-docs", "@storybook/addon-a11y", "@storybook/addon-themes"],
   framework: {

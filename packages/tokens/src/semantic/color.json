@@ -31,6 +31,30 @@
       "divider": { "$type": "color", "$value": "{color.hair.3}" },
       "interactive": { "$type": "color", "$value": "{color.hair.4}" }
     },
+    "chart": {
+      "$description": "Data-viz roles. Categorical series colors assign in fixed order 1..5 and never encode state — status stays with color.status.*.",
+      "cat": {
+        "1": { "$type": "color", "$value": "{color.dataviz.blue}" },
+        "2": { "$type": "color", "$value": "{color.dataviz.teal}" },
+        "3": { "$type": "color", "$value": "{color.dataviz.ochre}" },
+        "4": { "$type": "color", "$value": "{color.dataviz.magenta}" },
+        "5": { "$type": "color", "$value": "{color.dataviz.rust}" }
+      },
+      "seq": {
+        "1": { "$type": "color", "$value": "{color.dataviz.seq.1}" },
+        "2": { "$type": "color", "$value": "{color.dataviz.seq.2}" },
+        "3": { "$type": "color", "$value": "{color.dataviz.seq.3}" },
+        "4": { "$type": "color", "$value": "{color.dataviz.seq.4}" },
+        "5": { "$type": "color", "$value": "{color.dataviz.seq.5}" }
+      },
+      "diverging": {
+        "positive": { "$type": "color", "$value": "{color.dataviz.blue}" },
+        "negative": { "$type": "color", "$value": "{color.dataviz.rust}" },
+        "mid": { "$type": "color", "$value": "{color.hair.4}" }
+      },
+      "grid": { "$type": "color", "$value": "{color.hair.3}" },
+      "axis": { "$type": "color", "$value": "{color.ink.6}" }
+    },
     "status": {
       "$description": "Theme-invariant. Status is signal, not brand — 'color is a scarce, earned resource'. Always pair with a text label (dot + text), never color alone.",
       "success": {

@@ -5,6 +5,6 @@
   "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "linked": [["@shamrock-design/tokens", "@shamrock-design/ui", "@shamrock-design/icons"]],
+  "linked": [["@shamrock-design/tokens", "@shamrock-design/ui", "@shamrock-design/icons", "@shamrock-design/charts"]],
   "ignore": ["@shamrock-design/workshop", "@shamrock-design/smoke"]
 }

@@ -9,6 +9,7 @@
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
+    "@shamrock-design/charts": "workspace:^",
     "@shamrock-design/icons": "workspace:*",
     "@shamrock-design/tokens": "workspace:*",
     "@shamrock-design/ui": "workspace:*",

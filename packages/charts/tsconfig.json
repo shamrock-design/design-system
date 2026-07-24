@@ -1,0 +1,4 @@
+{
+  "extends": "@shamrock-design/tsconfig/react-library.json",
+  "include": ["src", "css-modules.d.ts", "vitest.setup.ts", "vitest.config.ts"]
+}

@@ -3,5 +3,5 @@
   "compilerOptions": {
     "types": ["vitest/globals"]
   },
-  "include": ["src", "css-modules.d.ts"]
+  "include": ["src", "css-modules.d.ts", "vitest.setup.ts", "vitest.config.ts"]
 }

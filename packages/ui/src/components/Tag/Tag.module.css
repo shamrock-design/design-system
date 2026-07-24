@@ -1,0 +1,27 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--sh-tag-border);
+  border-radius: var(--sh-radius-none);
+  background: var(--sh-tag-bg);
+  color: var(--sh-tag-text);
+  font-weight: var(--sh-font-weight-medium);
+  letter-spacing: var(--sh-font-tracking-body);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.sm {
+  padding: 1px var(--sh-space-3);
+  font-size: var(--sh-font-size-caption);
+}
+
+.md {
+  padding: 2px var(--sh-space-4);
+  font-size: var(--sh-font-size-meta);
+}
+
+.mono {
+  font-family: var(--sh-font-family-machine);
+  font-weight: var(--sh-font-weight-regular);
+}

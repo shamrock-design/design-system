@@ -9,3 +9,10 @@ export { Aurora } from "./primitives/Aurora/Aurora";
 
 export { STATUSES, STATUS_LABELS, mapLegacyStatus } from "./constants/status";
 export type { Status } from "./constants/status";
+
+export { Button } from "./components/Button/Button";
+export type { ButtonProps, ButtonVariant, ButtonSize } from "./components/Button/Button";
+export { StatusBadge } from "./components/StatusBadge/StatusBadge";
+export type { StatusBadgeProps } from "./components/StatusBadge/StatusBadge";
+export { Tag } from "./components/Tag/Tag";
+export type { TagProps, TagTone } from "./components/Tag/Tag";

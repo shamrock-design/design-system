@@ -1,0 +1,17 @@
+.svg {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: visible;
+}
+
+.line {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.end {
+  stroke: var(--sh-color-surface-solid);
+  stroke-width: 1;
+}

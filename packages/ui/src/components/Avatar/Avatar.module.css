@@ -1,0 +1,53 @@
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  overflow: hidden;
+  background: var(--sh-avatar-bg);
+  color: var(--sh-color-text-inverse);
+  font-weight: var(--sh-font-weight-semibold);
+  line-height: 1;
+  user-select: none;
+}
+
+/* circle — the canon dot/orb radius exception */
+.circle {
+  border-radius: var(--sh-radius-circle);
+}
+
+/* quiet variant: hairline ring + ink text on glass */
+.muted {
+  background: var(--sh-surface-card);
+  border: 1px solid var(--sh-color-border-hairline-strong);
+  color: var(--sh-color-text-secondary);
+}
+
+/* sizes */
+.sm {
+  width: 24px;
+  height: 24px;
+  font-size: var(--sh-font-size-micro);
+}
+
+.md {
+  width: 32px;
+  height: 32px;
+  font-size: var(--sh-font-size-caption);
+}
+
+.lg {
+  width: 40px;
+  height: 40px;
+  font-size: var(--sh-font-size-meta);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.initials {
+  letter-spacing: var(--sh-font-tracking-caps);
+}

@@ -20,6 +20,9 @@ importers:
 
   apps/smoke:
     dependencies:
+      '@shamrock-design/charts':
+        specifier: workspace:^
+        version: link:../../packages/charts
       '@shamrock-design/icons':
         specifier: workspace:*
         version: link:../../packages/icons

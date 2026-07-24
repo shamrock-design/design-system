@@ -2,14 +2,20 @@
 export const ICON_PATHS = {
   "arrow-right": "<path d=\"M4 12h15M13.5 6l6 6-6 6\"/>",
   "bell": "<path d=\"M6 10a6 6 0 0 1 12 0c0 4 1.5 5.5 1.5 5.5h-15S6 14 6 10zM10 19a2 2 0 0 0 4 0\"/>",
+  "calendar": "<rect x=\"3.5\" y=\"5\" width=\"17\" height=\"15.5\"/><path d=\"M3.5 9.5h17M8 3.5v3M16 3.5v3\"/>",
   "check": "<path d=\"M5 12.5l4.5 4.5L19 7.5\"/>",
   "chevron-down": "<path d=\"M6 9.5l6 6 6-6\"/>",
+  "chevron-left": "<path d=\"M14.5 6l-6 6 6 6\"/>",
   "chevron-right": "<path d=\"M9.5 6l6 6-6 6\"/>",
   "clock": "<circle cx=\"12\" cy=\"12\" r=\"8.5\"/><path d=\"M12 7.5V12l3 2.5\"/>",
+  "filter": "<path d=\"M4 5.5h16l-6 7v5l-4 2v-7l-6-7z\"/>",
   "layers": "<path d=\"M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5M3 17.5l9 5 9-5\"/>",
   "plus": "<path d=\"M12 5v14M5 12h14\"/>",
+  "refresh": "<path d=\"M20 6.5A8 8 0 1 0 21 12M20 4v3.5h-3.5\"/>",
   "run": "<path d=\"M8 5.5v13l10-6.5-10-6.5z\"/>",
   "search": "<circle cx=\"11\" cy=\"11\" r=\"6.5\"/><path d=\"M15.8 15.8L20 20\"/>",
+  "trash": "<path d=\"M4.5 6.5h15M9 6.5V4.5h6v2M6.5 6.5l1 13h9l1-13M10 10v6M14 10v6\"/>",
+  "upload": "<path d=\"M12 15.5V4M7.5 8.5L12 4l4.5 4.5M5 19.5h14\"/>",
   "warn": "<path d=\"M12 4L2.8 19.5h18.4L12 4zM12 10v4.5\"/><circle cx=\"12\" cy=\"17\" r=\"0.5\"/>",
   "x": "<path d=\"M6 6l12 12M18 6L6 18\"/>"
 } as const;

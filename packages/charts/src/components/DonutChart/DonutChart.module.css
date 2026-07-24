@@ -1,0 +1,63 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sh-space-8);
+  width: 100%;
+}
+
+.plot {
+  position: relative;
+  flex: none;
+}
+
+.svg {
+  display: block;
+  overflow: visible;
+}
+
+.slice {
+  cursor: pointer;
+}
+
+.slice.dim {
+  opacity: 0.55;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sh-space-1);
+  pointer-events: none;
+  text-align: center;
+}
+
+.total {
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-h2);
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: var(--sh-font-tracking-tight);
+  line-height: var(--sh-font-leading-tight);
+  color: var(--sh-color-text-primary);
+}
+
+.caption {
+  max-width: 12ch;
+  font-family: var(--sh-font-family-sans);
+  font-size: var(--sh-font-size-micro);
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: var(--sh-font-tracking-caps);
+  text-transform: uppercase;
+  line-height: var(--sh-font-leading-tight);
+  color: var(--sh-color-text-subtle);
+}
+
+.legend {
+  flex: 1 1 auto;
+  min-width: 0;
+}

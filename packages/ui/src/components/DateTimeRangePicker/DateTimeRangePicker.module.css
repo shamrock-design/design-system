@@ -1,0 +1,116 @@
+.root {
+  display: inline-flex;
+  align-items: stretch;
+  gap: var(--sh-space-2);
+}
+
+.flip {
+  transform: rotate(180deg);
+}
+
+.stepper {
+  flex: none;
+}
+
+/* the formatted range field — dressed like TextInput, machine face */
+.field {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  border: 1px solid var(--sh-color-border-interactive);
+  border-radius: var(--sh-radius-none);
+  background: var(--sh-surface-solid);
+  color: var(--sh-color-text-primary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    border-color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard),
+    box-shadow var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.field:hover:not([data-disabled]),
+.field[data-popup-open] {
+  border-color: var(--sh-color-border-hairline-strong);
+}
+
+.field:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}
+
+.field[data-disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.fieldValue {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* sizes — heights match Button/TextInput */
+.sm .field {
+  height: 26px;
+  padding: 0 var(--sh-space-3);
+  font-size: var(--sh-font-size-meta);
+}
+
+.md .field {
+  height: 30px;
+  padding: 0 var(--sh-space-4);
+  font-size: var(--sh-font-size-body);
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+/* popover — overlay glass per docs/guidelines/elevation.md */
+.positioner {
+  z-index: var(--sh-z-modal);
+}
+
+.popup {
+  box-sizing: border-box;
+  border: 1px solid var(--sh-color-border-hairline);
+  border-radius: var(--sh-radius-none);
+  background: var(--sh-surface-overlay);
+  box-shadow: var(--sh-shadow-1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: opacity var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.popup[data-starting-style],
+.popup[data-ending-style] {
+  opacity: 0;
+}
+
+.body {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sh-space-5);
+  padding: var(--sh-space-5);
+}
+
+.quick {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sh-space-1);
+  min-width: 8.5rem;
+  padding-right: var(--sh-space-5);
+  border-right: 1px solid var(--sh-color-border-divider);
+}
+
+.quickButton {
+  justify-content: flex-start;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--sh-space-2);
+  padding: var(--sh-space-3) var(--sh-space-5);
+  border-top: 1px solid var(--sh-color-border-divider);
+}

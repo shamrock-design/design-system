@@ -1,0 +1,52 @@
+.tooltip {
+  position: absolute;
+  z-index: var(--sh-z-tooltip);
+  pointer-events: none;
+  transform: translate(-50%, calc(-100% - 10px));
+  min-width: max-content;
+  max-width: 220px;
+  padding: var(--sh-space-2) var(--sh-space-3);
+  background: var(--sh-color-text-primary);
+  color: var(--sh-color-text-inverse);
+  font-family: var(--sh-font-family-sans);
+  font-size: var(--sh-font-size-caption);
+  line-height: var(--sh-font-leading-tight);
+  letter-spacing: var(--sh-font-tracking-body);
+}
+
+.title {
+  display: block;
+  margin-bottom: var(--sh-space-1);
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  letter-spacing: var(--sh-font-tracking-caps);
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--sh-space-2);
+  white-space: nowrap;
+}
+
+.row + .row {
+  margin-top: var(--sh-space-1);
+}
+
+.swatch {
+  width: 8px;
+  height: 8px;
+  flex: none;
+}
+
+.label {
+  margin-right: var(--sh-space-4);
+}
+
+.value {
+  margin-left: auto;
+  font-family: var(--sh-font-family-machine);
+  font-variant-numeric: tabular-nums;
+}

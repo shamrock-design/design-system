@@ -1,0 +1,82 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--sh-space-4);
+  padding: var(--sh-card-padding, var(--sh-space-6));
+  border: 1px solid var(--sh-color-border-hairline);
+  border-radius: var(--sh-radius-none);
+  font-family: inherit;
+  text-align: left;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* surfaces — border-first, no resting shadow per elevation.md */
+.glass {
+  background: var(--sh-surface-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.solid {
+  background: var(--sh-surface-solid);
+}
+
+.faint {
+  background: var(--sh-surface-faint);
+}
+
+/* top color bar */
+.accentBar {
+  border-top: 3px solid var(--sh-color-accent-base);
+}
+
+/* stage color-bar (`.pcard` pattern) — var set from the Status prop */
+.statusBar {
+  border-top: 3px solid var(--sh-card-accent);
+}
+
+/* interactive: hover lift per elevation.md */
+.interactive {
+  cursor: pointer;
+  transition:
+    transform var(--sh-motion-duration-fast) var(--sh-motion-easing-standard),
+    box-shadow var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sh-shadow-2);
+}
+
+.interactive:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}
+
+/* header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sh-space-4);
+}
+
+.headerTitle {
+  min-width: 0;
+  overflow: hidden;
+  font-size: var(--sh-font-size-control);
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: var(--sh-font-tracking-tight);
+  color: var(--sh-color-text-primary);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.headerTrailing {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: var(--sh-space-3);
+}

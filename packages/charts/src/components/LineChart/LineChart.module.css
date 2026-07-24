@@ -1,0 +1,44 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sh-space-3);
+  width: 100%;
+}
+
+.plot {
+  position: relative;
+  width: 100%;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+.line {
+  fill: none;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.crosshair {
+  stroke: var(--sh-color-chart-axis);
+  stroke-width: 1;
+}
+
+.marker {
+  stroke: var(--sh-color-surface-solid);
+  stroke-width: 2;
+}
+
+.dot {
+  stroke: var(--sh-color-surface-solid);
+  stroke-width: 1;
+}
+
+.overlay {
+  fill: transparent;
+  cursor: crosshair;
+}

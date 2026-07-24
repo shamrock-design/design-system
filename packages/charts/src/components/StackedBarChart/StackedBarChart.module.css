@@ -1,0 +1,25 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sh-space-3);
+  width: 100%;
+}
+
+.plot {
+  position: relative;
+  width: 100%;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+.segment {
+  cursor: pointer;
+}
+
+.segment.dim {
+  opacity: 0.55;
+}

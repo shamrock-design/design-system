@@ -1,0 +1,91 @@
+.root {
+  display: inline-flex;
+  align-items: stretch;
+}
+
+/* sharp rectangle per canon — "pill" is legacy naming only */
+.alert {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sh-space-2);
+  height: 26px;
+  padding: 0 var(--sh-space-3);
+  border: 1px solid transparent;
+  border-radius: var(--sh-radius-none);
+  background: var(--sh-alert-bg);
+  color: var(--sh-alert-text);
+  font-family: inherit;
+  font-size: var(--sh-font-size-meta);
+  font-weight: var(--sh-font-weight-medium);
+  letter-spacing: var(--sh-font-tracking-body);
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    border-color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard),
+    background var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.alert:hover {
+  border-color: var(--sh-alert-base);
+}
+
+.alert:active {
+  border-color: var(--sh-alert-text);
+}
+
+.alert:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+}
+
+/* count is a machine value */
+.count {
+  font-family: var(--sh-font-family-machine);
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: 0;
+}
+
+/* chevron-right: the "this goes somewhere" affordance the ref lacked */
+.chevron {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  transition: transform var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.alert:hover .chevron {
+  transform: translateX(2px);
+}
+
+.dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-left: 1px solid var(--sh-alert-base);
+  border-radius: var(--sh-radius-none);
+  background: var(--sh-alert-bg);
+  color: var(--sh-alert-text);
+  cursor: pointer;
+  transition: background var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.dismiss:hover {
+  background: var(--sh-surface-solid);
+}
+
+.dismiss:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}

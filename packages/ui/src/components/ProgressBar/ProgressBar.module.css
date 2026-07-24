@@ -1,0 +1,57 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sh-space-2);
+  width: 100%;
+}
+
+/* machine baseline copy, right-aligned above the track */
+.label {
+  align-self: flex-end;
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-caption);
+  line-height: var(--sh-font-leading-tight);
+  color: var(--sh-color-text-tertiary);
+}
+
+/* track — faint surface + hairline */
+.track {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--sh-surface-faint);
+  border: 1px solid var(--sh-color-border-hairline);
+  border-radius: var(--sh-radius-none);
+}
+
+.sm {
+  height: 4px;
+}
+
+.md {
+  height: 6px;
+}
+
+/* single fill */
+.fill {
+  display: block;
+  height: 100%;
+  background: var(--sh-progress-fill, var(--sh-color-accent-base));
+  transition: width var(--sh-motion-duration-slow) var(--sh-motion-easing-standard);
+}
+
+/* segmented proportion bar — ordered, 2px surface gaps */
+.segments {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  /* 2px hairline gap between segments — sub-token structural seam (see SPEC) */
+  gap: 2px;
+}
+
+.segment {
+  display: block;
+  height: 100%;
+  min-width: 0;
+  background: var(--sh-progress-fill);
+}

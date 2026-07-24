@@ -55,3 +55,42 @@ export { DataTable } from "./components/DataTable/DataTable";
 export type { DataTableProps, Column, SortState } from "./components/DataTable/DataTable";
 export { Pagination, paginationItems } from "./components/DataTable/Pagination";
 export type { PaginationProps, PaginationItem } from "./components/DataTable/Pagination";
+
+// ── Phase 3: shell, surfaces, patterns ──────────────────────────────────────
+export { AppShell } from "./components/AppShell/AppShell";
+export type {
+  AppShellProps,
+  AppShellBrandProps,
+  AppShellNavSectionProps,
+  AppShellNavItemProps,
+  AppShellTopbarProps,
+} from "./components/AppShell/AppShell";
+export { Card } from "./components/Card/Card";
+export type { CardProps, CardHeaderProps, CardVariant } from "./components/Card/Card";
+export { Drawer } from "./components/Drawer/Drawer";
+export type { DrawerProps, DrawerHeaderProps, DrawerSize } from "./components/Drawer/Drawer";
+
+export { Avatar, getInitials, getIdentityColorIndex } from "./components/Avatar/Avatar";
+export type { AvatarProps, AvatarSize, AvatarShape } from "./components/Avatar/Avatar";
+export { Breadcrumbs } from "./components/Breadcrumbs/Breadcrumbs";
+export type { BreadcrumbsProps, BreadcrumbItem } from "./components/Breadcrumbs/Breadcrumbs";
+export { GlobalAlertPill } from "./components/GlobalAlertPill/GlobalAlertPill";
+export type { GlobalAlertPillProps } from "./components/GlobalAlertPill/GlobalAlertPill";
+
+export { ProgressBar } from "./components/ProgressBar/ProgressBar";
+export type { ProgressBarProps, ProgressBarSize, ProgressSegment } from "./components/ProgressBar/ProgressBar";
+export { CodeConsole } from "./components/CodeConsole/CodeConsole";
+export type { CodeConsoleProps, CodeConsoleLine, CodeConsoleLevel } from "./components/CodeConsole/CodeConsole";
+export { FolderTree } from "./components/FolderTree/FolderTree";
+export type { FolderTreeProps, TreeNode } from "./components/FolderTree/FolderTree";
+export { FileDropzone, formatBytes } from "./components/FileDropzone/FileDropzone";
+export type { FileDropzoneProps } from "./components/FileDropzone/FileDropzone";
+
+export { DateTimeRangePicker } from "./components/DateTimeRangePicker/DateTimeRangePicker";
+export type {
+  DateTimeRangePickerProps,
+  DateTimeRangePickerSize,
+  DateTimeRange,
+  QuickRange,
+  RangeStepper,
+} from "./components/DateTimeRangePicker/DateTimeRangePicker";

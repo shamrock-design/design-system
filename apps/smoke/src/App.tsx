@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SegmentedControl, ToastProvider } from "@shamrock-design/ui";
 import { Benchmark } from "./Benchmark";
+import { Flagship } from "./Flagship";
 import { Foundations } from "./Foundations";
 
 const THEMES = ["neutral", "clover", "violet"] as const;
@@ -30,6 +31,7 @@ export function App() {
           size="sm"
           options={[
             { value: "benchmark", label: "Benchmark" },
+            { value: "flagship", label: "Flagship" },
             { value: "foundations", label: "Foundations" },
           ]}
           value={page}
@@ -47,7 +49,7 @@ export function App() {
           aria-label="Theme"
         />
       </div>
-      {page === "benchmark" ? <Benchmark /> : <Foundations />}
+      {page === "benchmark" ? <Benchmark /> : page === "flagship" ? <Flagship /> : <Foundations />}
     </ToastProvider>
   );
 }

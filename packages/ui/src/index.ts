@@ -94,3 +94,32 @@ export type {
   QuickRange,
   RangeStepper,
 } from "./components/DateTimeRangePicker/DateTimeRangePicker";
+
+// ── Phase 4: flagship patterns ──────────────────────────────────────────────
+export { CascadeTimeline } from "./patterns/CascadeTimeline/CascadeTimeline";
+export type { CascadeTimelineProps, CascadeStep } from "./patterns/CascadeTimeline/CascadeTimeline";
+export { Timeline } from "./patterns/Timeline/Timeline";
+export type { TimelineProps, TimelineItem } from "./patterns/Timeline/Timeline";
+export {
+  AgentOrb,
+  ChatMessage,
+  ThinkingBlock,
+  ThinkingStep,
+  SuggestionChips,
+  RunRefChip,
+  ChatComposer,
+  CompanionPanel,
+} from "./patterns/ChatKit";
+export type {
+  AgentOrbProps,
+  AgentOrbSize,
+  ChatMessageProps,
+  ChatRole,
+  ThinkingBlockProps,
+  ThinkingStepProps,
+  SuggestionChipsProps,
+  SuggestionItem,
+  RunRefChipProps,
+  ChatComposerProps,
+  CompanionPanelProps,
+} from "./patterns/ChatKit";

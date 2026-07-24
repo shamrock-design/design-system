@@ -1,0 +1,329 @@
+/* Timeline — swimlane Gantt. Solid surface (dense data area, no glass blur),
+   hairline structure, calm bars; saturated color only for warning/critical. */
+
+.root {
+  position: relative;
+  background: var(--sh-surface-solid);
+  border: 1px solid var(--sh-color-border-hairline);
+  border-radius: var(--sh-radius-none);
+}
+
+.scroll {
+  position: relative;
+  overflow: auto;
+  /* let the consumer cap height for internal scroll + sticky axis; else grows to content */
+  max-height: inherit;
+}
+
+.canvas {
+  position: relative;
+}
+
+/* ===== axis ===== */
+
+.axis {
+  position: sticky;
+  top: 0;
+  z-index: var(--sh-z-sticky);
+  background: var(--sh-surface-solid);
+  border-bottom: 1px solid var(--sh-color-border-hairline-strong);
+}
+
+.axisCorner {
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: var(--sh-tl-lane-width);
+  height: 100%;
+  background: var(--sh-surface-solid);
+  border-right: 1px solid var(--sh-color-border-hairline-strong);
+}
+
+.tick {
+  position: absolute;
+  top: 0;
+  border-left: 1px solid var(--sh-color-border-hairline);
+}
+
+.tickLabel {
+  display: inline-block;
+  padding: var(--sh-space-3) 0 0 var(--sh-space-2);
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-caption);
+  color: var(--sh-color-text-subtle);
+  white-space: nowrap;
+}
+
+.tickMajor {
+  border-left: 2px solid var(--sh-color-border-hairline-strong);
+}
+
+.tickMajor .tickLabel {
+  color: var(--sh-color-text-tertiary);
+  font-weight: var(--sh-font-weight-semibold);
+}
+
+/* ===== lanes canvas ===== */
+
+.lanes {
+  position: relative;
+}
+
+.gridLine {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  background: var(--sh-color-border-divider);
+  pointer-events: none;
+}
+
+.gridLineMajor {
+  background: var(--sh-color-border-hairline-strong);
+}
+
+/* ===== now line ===== */
+
+.nowLine {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  background: var(--sh-color-status-critical-base);
+  pointer-events: none;
+}
+
+.nowTag {
+  position: absolute;
+  top: var(--sh-space-1);
+  left: 3px;
+  padding: 1px var(--sh-space-2);
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  font-weight: var(--sh-font-weight-bold);
+  letter-spacing: var(--sh-font-tracking-caps);
+  color: var(--sh-color-status-critical-text);
+  background: var(--sh-color-status-critical-bg);
+  white-space: nowrap;
+}
+
+/* ===== lane ===== */
+
+.lane {
+  position: relative;
+  border-bottom: 1px solid var(--sh-color-border-hairline);
+}
+
+.laneLabel {
+  position: sticky;
+  left: 0;
+  z-index: var(--sh-z-sticky);
+  display: flex;
+  align-items: center;
+  width: var(--sh-tl-lane-width);
+  height: 100%;
+  padding: 0 var(--sh-space-5);
+  background: var(--sh-surface-solid);
+  border-right: 1px solid var(--sh-color-border-hairline-strong);
+}
+
+.laneName {
+  overflow: hidden;
+  font-size: var(--sh-font-size-meta);
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: var(--sh-font-tracking-tighter);
+  color: var(--sh-color-text-primary);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ===== item ===== */
+
+.cell {
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+.node {
+  display: flex;
+  align-items: center;
+  gap: var(--sh-space-2);
+  width: max-content;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: default;
+}
+
+.interactive {
+  cursor: pointer;
+}
+
+.interactive:focus-visible {
+  outline: none;
+}
+
+.interactive:focus-visible .bar,
+.interactive:focus-visible .diamond,
+.interactive:focus-visible .label {
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}
+
+/* bar: calm grey by default, 3px left status color-bar carries the signal */
+.bar {
+  flex: none;
+  height: 16px;
+  background: var(--sh-color-border-hairline-strong);
+  border-left: 3px solid var(--sh-tl-status-base);
+  transition: filter var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.interactive:hover .bar {
+  filter: brightness(0.95);
+}
+
+/* saturated only for the states that earn attention */
+.node[data-status="warning"] .bar {
+  background: var(--sh-color-status-warning-base);
+}
+
+.node[data-status="critical"] .bar {
+  background: var(--sh-color-status-critical-base);
+}
+
+.node[data-status="running"] .bar {
+  background: var(--sh-color-status-running-bg);
+}
+
+/* pending / not-yet-due: hollow outline */
+.node[data-status="pending"] .bar {
+  background: transparent;
+  border: 1px solid var(--sh-color-border-hairline-strong);
+  border-left: 3px solid var(--sh-tl-status-base);
+}
+
+/* ghost (didn't run): dashed outline, faint — wins over status fill */
+.node[data-ghost] {
+  opacity: 0.7;
+}
+
+.node[data-ghost] .bar {
+  background: transparent;
+  border: 1px dashed var(--sh-tl-status-base);
+}
+
+.node[data-ghost] .diamond {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--sh-tl-status-base);
+}
+
+.node[data-ghost] .labelText {
+  font-style: italic;
+  color: var(--sh-color-text-subtle);
+}
+
+/* milestone mark */
+.diamond {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  background: var(--sh-tl-status-base);
+  transform: rotate(45deg);
+}
+
+/* status dot */
+.dot {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--sh-radius-circle);
+  background: var(--sh-tl-status-base);
+}
+
+.node[data-status="pending"] .dot,
+.node[data-status="neutral"] .dot {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--sh-tl-status-base);
+}
+
+.node[data-status="running"] .dot {
+  animation: sh-pulse 1.4s var(--sh-motion-easing-standard) infinite;
+}
+
+/* trailing label — faded solid backdrop keeps it legible over gridlines */
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--sh-space-2);
+  padding: 0 var(--sh-space-3) 0 var(--sh-space-2);
+  background: linear-gradient(90deg, var(--sh-surface-solid) 65%, transparent);
+  white-space: nowrap;
+}
+
+.labelText {
+  overflow: hidden;
+  max-width: 240px;
+  font-size: var(--sh-font-size-meta);
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: var(--sh-font-tracking-tighter);
+  color: var(--sh-color-text-secondary);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.system {
+  flex: none;
+}
+
+.time {
+  flex: none;
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-caption);
+  color: var(--sh-color-text-subtle);
+}
+
+.gate {
+  flex: none;
+  padding: 1px var(--sh-space-2);
+  border: 1px solid var(--sh-color-border-hairline-strong);
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  font-weight: var(--sh-font-weight-bold);
+  letter-spacing: var(--sh-font-tracking-caps);
+  color: var(--sh-color-text-tertiary);
+  background: var(--sh-surface-solid);
+}
+
+.ghostTag {
+  flex: none;
+  padding: 1px var(--sh-space-2);
+  font-size: var(--sh-font-size-micro);
+  font-weight: var(--sh-font-weight-bold);
+  letter-spacing: var(--sh-font-tracking-caps);
+  text-transform: uppercase;
+  color: var(--sh-color-status-critical-text);
+  background: var(--sh-color-status-critical-bg);
+}
+
+/* ===== empty ===== */
+
+.empty {
+  padding: var(--sh-space-9) var(--sh-space-6);
+  font-size: var(--sh-font-size-body);
+  color: var(--sh-color-text-subtle);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .node[data-status="running"] .dot {
+    animation: none;
+  }
+
+  .bar {
+    transition: none;
+  }
+}

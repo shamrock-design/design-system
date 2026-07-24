@@ -1,0 +1,437 @@
+/* ============================================================================
+   ChatKit — the AI companion surface (Cognito transcript, RapidX AiCompanion,
+   CM Data Integrity AI CHAT). One module for the whole family.
+
+   Canon: radius 0 everywhere (only the orb + its status dot may circle);
+   accent is scarce (used for the send CTA, suggestion outlines, run refs and
+   the user's own bubble); reasoning headers + metadata use the machine face;
+   glass surfaces over the Aurora backdrop with hairline edges, not shadows.
+   ========================================================================== */
+
+/* ── AgentOrb ─────────────────────────────────────────────────────────────
+   The AI identity mark: accent-tinted circle + glyph, with an optional
+   presence/status dot. The dot is the canon circle exception. */
+.orb {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  border-radius: var(--sh-radius-circle);
+  background: var(--sh-color-accent-subtle-bg);
+  border: 1px solid var(--sh-color-accent-subtle-border);
+  color: var(--sh-color-accent-subtle-text);
+}
+
+.orbSm {
+  width: 24px;
+  height: 24px;
+}
+
+.orbMd {
+  width: 30px;
+  height: 30px;
+}
+
+.orbDot {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 9px;
+  height: 9px;
+  border-radius: var(--sh-radius-circle);
+  background: var(--sh-orb-dot);
+  box-shadow: 0 0 0 2px var(--sh-orb-ring, var(--sh-surface-panel));
+}
+
+.orbDotPulse {
+  animation: sh-pulse 1.4s var(--sh-motion-easing-standard) infinite;
+}
+
+/* ── ChatMessage ──────────────────────────────────────────────────────────
+   Assistant = orb + text on glass/transparent, left. User = accent-tinted
+   bubble, right. Both sharp-cornered. */
+.message {
+  display: flex;
+  gap: var(--sh-space-3);
+  align-items: flex-start;
+  animation: sh-rise var(--sh-motion-duration-base) var(--sh-motion-easing-standard) both;
+}
+
+.user {
+  justify-content: flex-end;
+}
+
+.assistant {
+  justify-content: flex-start;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sh-space-2);
+  min-width: 0;
+}
+
+.user .body {
+  align-items: flex-end;
+  max-width: 82%;
+}
+
+.assistant .body {
+  align-items: flex-start;
+  max-width: 88%;
+}
+
+.bubble {
+  font-size: var(--sh-font-size-body);
+  line-height: 1.55;
+  letter-spacing: var(--sh-font-tracking-body);
+  border-radius: var(--sh-radius-none);
+}
+
+.bubbleUser {
+  padding: var(--sh-space-3) var(--sh-space-4);
+  background: var(--sh-color-accent-subtle-bg);
+  border: 1px solid var(--sh-color-accent-subtle-border);
+  color: var(--sh-color-text-primary);
+}
+
+.bubbleAssistant {
+  padding: 0;
+  background: transparent;
+  color: var(--sh-color-text-secondary);
+}
+
+.bubbleAssistant :is(b, strong) {
+  color: var(--sh-color-text-primary);
+  font-weight: var(--sh-font-weight-semibold);
+}
+
+.timestamp {
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  letter-spacing: var(--sh-font-tracking-body);
+  color: var(--sh-color-text-subtle);
+}
+
+/* ── ThinkingBlock ────────────────────────────────────────────────────────
+   Reasoning disclosure: machine-face uppercase header + optional spinner,
+   collapsible body of steps/chips. */
+.thinking {
+  background: var(--sh-surface-faint);
+  border: 1px solid var(--sh-color-border-hairline);
+  border-radius: var(--sh-radius-none);
+}
+
+.thinkingHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--sh-space-3);
+  width: 100%;
+  padding: var(--sh-space-3) var(--sh-space-4);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  color: var(--sh-color-text-tertiary);
+}
+
+.thinkingHeader:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--sh-color-accent-focus-ring);
+}
+
+.thinkingLabel {
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: var(--sh-font-tracking-caps);
+  text-transform: uppercase;
+  color: var(--sh-color-text-tertiary);
+}
+
+.thinkingMeta {
+  margin-left: auto;
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  letter-spacing: var(--sh-font-tracking-body);
+  color: var(--sh-color-text-subtle);
+}
+
+.thinkingChevron {
+  display: inline-flex;
+  flex: none;
+  color: var(--sh-color-text-subtle);
+  transition: transform var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.thinkingChevronOpen {
+  transform: rotate(180deg);
+}
+
+.thinkingBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sh-space-3);
+  padding: 0 var(--sh-space-4) var(--sh-space-4);
+}
+
+/* Reusable spinner glyph (matches Button's spinner). */
+.spinner {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  border-radius: var(--sh-radius-circle);
+  border: 1.5px solid currentColor;
+  border-top-color: transparent;
+  animation: sh-spin 0.7s linear infinite;
+}
+
+/* ── ThinkingStep ─────────────────────────────────────────────────────────
+   One reasoning line: mono step label + explanation (echoes the `.layer`
+   verdict/because pattern from the benchmark). */
+.step {
+  display: flex;
+  gap: var(--sh-space-3);
+  align-items: baseline;
+}
+
+.stepLabel {
+  flex: none;
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: var(--sh-font-tracking-caps);
+  text-transform: uppercase;
+  color: var(--sh-color-text-subtle);
+}
+
+.stepText {
+  font-size: var(--sh-font-size-meta);
+  line-height: 1.5;
+  letter-spacing: var(--sh-font-tracking-body);
+  color: var(--sh-color-text-secondary);
+}
+
+/* ── SuggestionChips ──────────────────────────────────────────────────────
+   Accent-outline prompt starters, wrapping row. */
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sh-space-2);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sh-space-2);
+  padding: var(--sh-space-2) var(--sh-space-4);
+  border: 1px solid var(--sh-color-accent-subtle-border);
+  border-radius: var(--sh-radius-none);
+  background: transparent;
+  color: var(--sh-color-accent-subtle-text);
+  font-family: inherit;
+  font-size: var(--sh-font-size-meta);
+  font-weight: var(--sh-font-weight-medium);
+  letter-spacing: var(--sh-font-tracking-body);
+  line-height: 1;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background var(--sh-motion-duration-fast) var(--sh-motion-easing-standard),
+    border-color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.chip:hover {
+  background: var(--sh-color-accent-subtle-bg);
+  border-color: var(--sh-color-accent-base);
+}
+
+.chip:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}
+
+/* ── RunRefChip ───────────────────────────────────────────────────────────
+   Machine-face reference to a run id / doc, clickable, accent-tinted. */
+.runref {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sh-space-1);
+  padding: 1px var(--sh-space-2);
+  border: 1px solid var(--sh-color-accent-subtle-border);
+  border-radius: var(--sh-radius-none);
+  background: var(--sh-color-accent-subtle-bg);
+  color: var(--sh-color-accent-subtle-text);
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: var(--sh-font-tracking-body);
+  line-height: 1.4;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+button.runref {
+  cursor: pointer;
+  transition:
+    background var(--sh-motion-duration-fast) var(--sh-motion-easing-standard),
+    border-color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+button.runref:hover {
+  border-color: var(--sh-color-accent-base);
+}
+
+button.runref:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}
+
+.runrefIcon {
+  display: inline-flex;
+  flex: none;
+}
+
+/* ── ChatComposer ─────────────────────────────────────────────────────────
+   Textarea styled like TextInput + accent send button. */
+.composer {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--sh-space-2);
+  padding: var(--sh-space-2);
+  background: var(--sh-surface-solid);
+  border: 1px solid var(--sh-color-border-interactive);
+  border-radius: var(--sh-radius-none);
+  transition:
+    border-color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard),
+    box-shadow var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.composer:focus-within {
+  border-color: var(--sh-color-accent-base);
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}
+
+.composerDisabled {
+  opacity: 0.55;
+}
+
+.composerInput {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 24px;
+  max-height: 132px;
+  padding: var(--sh-space-2) var(--sh-space-3);
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  font-size: var(--sh-font-size-body);
+  line-height: 1.45;
+  letter-spacing: var(--sh-font-tracking-body);
+  color: var(--sh-color-text-primary);
+  resize: none;
+  overflow-y: auto;
+}
+
+.composerInput::placeholder {
+  color: var(--sh-color-text-subtle);
+}
+
+.composerInput:disabled {
+  cursor: not-allowed;
+  color: var(--sh-color-text-disabled);
+}
+
+.composerSend {
+  flex: none;
+}
+
+/* ── CompanionPanel ───────────────────────────────────────────────────────
+   The right-side assistant container: glass, left hairline, header +
+   scrollable transcript + optional suggestions + pinned composer. */
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: var(--sh-surface-panel);
+  border-left: 1px solid var(--sh-color-border-hairline);
+  border-radius: var(--sh-radius-none);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--sh-space-3);
+  padding: var(--sh-space-4) var(--sh-space-5);
+  border-bottom: 1px solid var(--sh-color-border-hairline);
+}
+
+.panelHeaderText {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.panelTitle {
+  overflow: hidden;
+  font-size: var(--sh-font-size-control);
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: var(--sh-font-tracking-tight);
+  color: var(--sh-color-text-primary);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.panelSubtitle {
+  overflow: hidden;
+  font-size: var(--sh-font-size-caption);
+  letter-spacing: var(--sh-font-tracking-body);
+  color: var(--sh-color-text-subtle);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.panelClose {
+  flex: none;
+  margin-left: auto;
+}
+
+.transcript {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sh-space-5);
+  padding: var(--sh-space-6) var(--sh-space-5);
+}
+
+.panelFooter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sh-space-3);
+  padding: var(--sh-space-4) var(--sh-space-5);
+  border-top: 1px solid var(--sh-color-border-hairline);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .message {
+    animation: none;
+  }
+  .spinner,
+  .orbDotPulse {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+  }
+  .thinkingChevron {
+    transition: none;
+  }
+}

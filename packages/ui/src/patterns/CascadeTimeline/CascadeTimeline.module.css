@@ -1,0 +1,546 @@
+/* CascadeTimeline — dependency-sorted waterfall on a sticky time axis with an
+   in-place accordion ego-graph. Frozen label column (sticky left), sticky top
+   axis, real horizontal scroll. --sh-* tokens only; radius 0 everywhere except
+   status dots. Calm/exception-first: done = muted ink, saturated only for
+   running/late (amber) and failed (red). */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border: 1px solid var(--sh-color-border-hairline);
+  border-radius: var(--sh-radius-none);
+  background: var(--sh-surface-panel);
+  overflow: hidden;
+}
+
+.scroll {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: auto;
+  position: relative;
+}
+
+.canvas {
+  position: relative;
+  min-width: 100%;
+}
+
+/* ---- sticky time axis ---- */
+.axis {
+  position: sticky;
+  top: 0;
+  height: 34px;
+  z-index: var(--sh-z-sticky);
+  background: var(--sh-surface-overlay);
+  border-bottom: 1px solid var(--sh-color-border-hairline-strong);
+  backdrop-filter: blur(8px);
+}
+
+.axisCorner {
+  position: sticky;
+  left: 0;
+  top: 0;
+  height: 34px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sh-space-3);
+  padding: 0 var(--sh-space-4);
+  background: var(--sh-surface-overlay);
+  border-right: 1px solid var(--sh-color-border-hairline-strong);
+}
+
+.dayChip {
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-caption);
+  font-weight: var(--sh-font-weight-bold);
+  letter-spacing: var(--sh-font-tracking-body);
+  color: var(--sh-color-text-secondary);
+}
+
+.axisLegend {
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  color: var(--sh-color-text-faint);
+  white-space: nowrap;
+}
+
+.axisClip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 34px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.tick {
+  position: absolute;
+  top: 0;
+  height: 34px;
+  border-left: 1px solid var(--sh-color-hair-3);
+  padding: 10px 0 0 6px;
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  color: var(--sh-color-text-faint);
+  white-space: nowrap;
+}
+
+.tickMajor {
+  border-left-color: var(--sh-color-hair-1);
+  color: var(--sh-color-text-tertiary);
+  font-weight: var(--sh-font-weight-semibold);
+}
+
+.nowTag {
+  position: absolute;
+  top: 3px;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-family: var(--sh-font-family-machine);
+  font-size: 9px;
+  font-weight: var(--sh-font-weight-bold);
+  letter-spacing: var(--sh-font-tracking-caps);
+  color: var(--sh-color-text-inverse);
+  background: var(--sh-color-status-critical-base);
+  padding: 1px 4px;
+  white-space: nowrap;
+}
+
+/* ---- board ---- */
+.board {
+  position: relative;
+}
+
+.gridLayer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.grid {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1px solid var(--sh-color-hair-3);
+}
+
+.gridMajor {
+  border-left-color: var(--sh-color-hair-2);
+}
+
+.nowLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1.5px solid var(--sh-color-status-critical-base);
+  z-index: 1;
+}
+
+/* ---- rows ---- */
+.row {
+  display: flex;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--sh-color-hair-3);
+  border-radius: var(--sh-radius-none);
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.row:hover {
+  background: var(--sh-color-glass-3);
+}
+
+.row:focus-visible {
+  outline: 2px solid var(--sh-color-accent-focus-ring);
+  outline-offset: -2px;
+}
+
+.rowSel {
+  background: var(--sh-color-glass-4);
+  z-index: 2;
+}
+
+/* kin — quiet green inset ledge so neighbours stay findable on the clock */
+.rowKin {
+  background: var(--sh-color-status-success-bg);
+}
+.rowKin .labelCell {
+  box-shadow: inset 3px 0 0 var(--sh-color-status-success-base);
+}
+
+.labelCell {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  flex: 0 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--sh-space-2);
+  padding: 0 var(--sh-space-4) 0 var(--sh-space-3);
+  overflow: hidden;
+  background: var(--sh-surface-overlay);
+  border-right: 1px solid var(--sh-color-hair-3);
+  backdrop-filter: blur(8px);
+}
+
+.gutterL {
+  flex: 0 0 24px;
+  text-align: right;
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  color: var(--sh-color-text-faint);
+}
+
+.seq {
+  flex: 0 0 20px;
+  text-align: right;
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  color: var(--sh-color-text-faint);
+}
+
+.dot {
+  flex: 0 0 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: var(--sh-radius-circle);
+}
+
+.name {
+  flex: 0 1 auto;
+  min-width: 0;
+  font-size: var(--sh-font-size-body);
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: var(--sh-font-tracking-tight);
+  color: var(--sh-color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gate {
+  flex: 0 0 auto;
+  font-family: var(--sh-font-family-machine);
+  font-size: 8px;
+  font-weight: var(--sh-font-weight-bold);
+  letter-spacing: var(--sh-font-tracking-caps);
+  color: var(--sh-color-text-tertiary);
+  border: 1px solid var(--sh-color-hair-4);
+  padding: 0 3px;
+}
+
+.ghostTag {
+  flex: 0 0 auto;
+  font-family: var(--sh-font-family-machine);
+  font-size: 8px;
+  font-weight: var(--sh-font-weight-bold);
+  letter-spacing: var(--sh-font-tracking-caps);
+  color: var(--sh-color-amber-text);
+  border: 1px dashed var(--sh-color-amber-base);
+  padding: 0 3px;
+}
+
+.gutterR {
+  flex: 0 0 auto;
+  margin-left: auto;
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  color: var(--sh-color-text-faint);
+}
+
+.clockCell {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+}
+
+/* ---- bars ---- */
+.bar {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: var(--sh-radius-none);
+}
+
+.bDone {
+  background: var(--sh-color-ink-5);
+}
+.bRun,
+.bLate {
+  background: var(--sh-color-amber-base);
+}
+.bFail {
+  background: var(--sh-color-status-critical-base);
+}
+.bGhost {
+  background: var(--sh-color-amber-bg);
+  border: 1px dashed var(--sh-color-amber-base);
+  opacity: 0.75;
+}
+.bReady {
+  border: 1px solid var(--sh-color-ink-6);
+  background: var(--sh-color-glass-3);
+}
+.bLocked {
+  border: 1px solid var(--sh-color-hair-4);
+  background: transparent;
+}
+
+.live {
+  animation: sh-cascade-pulse 1.3s var(--sh-motion-easing-standard) infinite;
+}
+
+.timeChip {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  color: var(--sh-color-text-tertiary);
+  white-space: nowrap;
+}
+
+/* ---- accordion ego-graph ---- */
+.panel {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  overflow: hidden;
+  background: var(--sh-surface-overlay);
+  border-top: 1px solid var(--sh-color-border-hairline-strong);
+  border-bottom: 1px solid var(--sh-color-border-hairline-strong);
+  box-shadow: var(--sh-shadow-1);
+  backdrop-filter: blur(12px);
+  animation: sh-cascade-panel var(--sh-motion-duration-slow) var(--sh-motion-easing-standard);
+}
+
+.panelInner {
+  position: sticky;
+  left: 0;
+}
+
+.edges {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+.edges path {
+  fill: none;
+  stroke: var(--sh-color-ink-5);
+  stroke-width: 1;
+}
+.edgeOut {
+  stroke: var(--sh-color-ink-6);
+}
+
+.colHead {
+  position: absolute;
+  top: 18px;
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: var(--sh-font-tracking-caps);
+  text-transform: uppercase;
+  color: var(--sh-color-text-faint);
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  color: var(--sh-color-text-faint);
+  border: 1px solid var(--sh-color-hair-3);
+  border-radius: var(--sh-radius-none);
+  background: var(--sh-color-glass-2);
+  cursor: pointer;
+}
+.close:hover {
+  color: var(--sh-color-text-primary);
+}
+.close:focus-visible {
+  outline: 2px solid var(--sh-color-accent-focus-ring);
+  outline-offset: 1px;
+}
+
+.none {
+  position: absolute;
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  color: var(--sh-color-text-disabled);
+  text-align: center;
+}
+
+.chip {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: var(--sh-space-3);
+  padding: 0 var(--sh-space-4);
+  border: 1px solid var(--sh-color-hair-3);
+  border-radius: var(--sh-radius-none);
+  background: var(--sh-color-glass-2);
+  text-align: left;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    border-color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard),
+    background var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+.chip:hover {
+  border-color: var(--sh-color-hair-4);
+  background: var(--sh-surface-solid);
+}
+.chip:focus-visible {
+  outline: 2px solid var(--sh-color-accent-focus-ring);
+  outline-offset: 1px;
+}
+
+.chipDot {
+  flex: 0 0 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: var(--sh-radius-circle);
+}
+
+.chipName {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: var(--sh-font-size-meta);
+  font-weight: var(--sh-font-weight-semibold);
+  color: var(--sh-color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chipMeta {
+  flex: 0 0 auto;
+  font-family: var(--sh-font-family-machine);
+  font-size: 9px;
+  color: var(--sh-color-text-subtle);
+  white-space: nowrap;
+}
+
+.chipGhost {
+  border-style: dashed;
+  border-color: var(--sh-color-amber-base);
+}
+.chipGhost .chipName {
+  color: var(--sh-color-amber-text);
+}
+
+.chipCenter {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--sh-space-1);
+  border-color: var(--sh-color-ink-4);
+  background: var(--sh-surface-solid);
+  box-shadow: 0 0 0 1px var(--sh-color-ink-4);
+}
+
+.chipCenterName {
+  font-size: var(--sh-font-size-body);
+  font-weight: var(--sh-font-weight-semibold);
+  color: var(--sh-color-text-primary);
+  line-height: var(--sh-font-leading-tight);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.chipCenterMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--sh-space-3);
+  width: 100%;
+  min-width: 0;
+}
+
+.chipCenterTime {
+  font-size: 9px;
+  color: var(--sh-color-text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.foot {
+  position: absolute;
+  bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sh-space-5);
+  border-top: 1px dashed var(--sh-color-hair-3);
+  padding-top: var(--sh-space-4);
+}
+
+.footNeeds {
+  font-size: var(--sh-font-size-micro);
+}
+.footMet {
+  color: var(--sh-color-text-tertiary);
+}
+.footPending {
+  color: var(--sh-color-amber-text);
+}
+.footImpact {
+  font-size: var(--sh-font-size-micro);
+  color: var(--sh-color-text-subtle);
+  text-align: right;
+}
+
+@keyframes sh-cascade-pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@keyframes sh-cascade-panel {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live,
+  .panel {
+    animation: none;
+  }
+  .row {
+    transition: none;
+  }
+}

@@ -1,0 +1,79 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sh-space-3);
+  cursor: pointer;
+  color: var(--sh-color-text-primary);
+  letter-spacing: var(--sh-font-tracking-body);
+  line-height: var(--sh-font-leading-tight);
+}
+
+.sm {
+  font-size: var(--sh-font-size-meta);
+}
+
+.md {
+  font-size: var(--sh-font-size-body);
+}
+
+.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  border: 1px solid var(--sh-color-border-interactive);
+  border-radius: var(--sh-radius-none);
+  background: var(--sh-surface-solid);
+  color: var(--sh-color-accent-on-accent);
+  transition:
+    background var(--sh-motion-duration-fast) var(--sh-motion-easing-standard),
+    border-color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.sm .box {
+  width: 14px;
+  height: 14px;
+}
+
+.md .box {
+  width: 16px;
+  height: 16px;
+}
+
+.root:hover .box:not([data-disabled]):not([data-checked]):not([data-indeterminate]) {
+  border-color: var(--sh-color-accent-subtle-border);
+}
+
+.box[data-checked],
+.box[data-indeterminate] {
+  background: var(--sh-color-accent-base);
+  border-color: var(--sh-color-accent-base);
+}
+
+.box:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}
+
+.indicator {
+  display: inline-flex;
+}
+
+.mark {
+  display: block;
+}
+
+.sm .mark {
+  width: 10px;
+  height: 10px;
+}
+
+.md .mark {
+  width: 12px;
+  height: 12px;
+}

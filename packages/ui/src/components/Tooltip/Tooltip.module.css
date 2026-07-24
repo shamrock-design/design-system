@@ -1,0 +1,21 @@
+.positioner {
+  z-index: var(--sh-z-tooltip);
+}
+
+.popup {
+  max-width: 280px;
+  padding: var(--sh-space-2) var(--sh-space-3);
+  border-radius: var(--sh-radius-none);
+  background: var(--sh-color-text-primary);
+  color: var(--sh-color-text-inverse);
+  font-size: var(--sh-font-size-caption);
+  letter-spacing: var(--sh-font-tracking-body);
+  line-height: var(--sh-font-leading-base);
+  overflow-wrap: break-word;
+  transition: opacity var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.popup[data-starting-style],
+.popup[data-ending-style] {
+  opacity: 0;
+}

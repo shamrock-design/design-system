@@ -1,0 +1,99 @@
+.viewport {
+  position: fixed;
+  right: var(--sh-space-7);
+  bottom: var(--sh-space-7);
+  z-index: var(--sh-z-toast);
+  display: flex;
+  /* toasts[0] is newest — column-reverse keeps it nearest the corner */
+  flex-direction: column-reverse;
+  gap: var(--sh-space-4);
+  width: 340px;
+  max-width: calc(100vw - var(--sh-space-7) * 2);
+  margin: 0;
+  padding: 0;
+}
+
+/* solid surface — glass blur hurts legibility for transient text */
+.toast {
+  position: relative;
+  border: 1px solid var(--sh-color-border-hairline-strong);
+  border-left: 3px solid var(--sh-toast-status-base);
+  border-radius: var(--sh-radius-none);
+  background: var(--sh-surface-solid);
+  box-shadow: var(--sh-shadow-1);
+  padding: var(--sh-space-5) var(--sh-space-9) var(--sh-space-5) var(--sh-space-5);
+  animation: sh-slidein var(--sh-motion-duration-slow) var(--sh-motion-easing-standard);
+  transition:
+    opacity var(--sh-motion-duration-base) var(--sh-motion-easing-standard),
+    transform var(--sh-motion-duration-base) var(--sh-motion-easing-standard);
+}
+
+.toast[data-ending-style] {
+  opacity: 0;
+  transform: translateX(var(--sh-space-8));
+}
+
+.toast[data-limited] {
+  display: none;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: var(--sh-space-3);
+}
+
+/* status dot — same 6px orb as StatusBadge */
+.dot {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: var(--sh-radius-circle);
+  background: var(--sh-toast-status-base);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--sh-font-size-body);
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: var(--sh-font-tracking-body);
+  color: var(--sh-color-text-primary);
+}
+
+.description {
+  margin: var(--sh-space-2) 0 0;
+  padding-left: var(--sh-space-5);
+  font-size: var(--sh-font-size-meta);
+  letter-spacing: var(--sh-font-tracking-body);
+  color: var(--sh-color-text-secondary);
+}
+
+.close {
+  position: absolute;
+  top: var(--sh-space-3);
+  right: var(--sh-space-3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--sh-radius-none);
+  background: transparent;
+  color: var(--sh-color-text-subtle);
+  cursor: pointer;
+  transition:
+    background var(--sh-motion-duration-fast) var(--sh-motion-easing-standard),
+    color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.close:hover {
+  background: var(--sh-color-accent-subtle-bg);
+  color: var(--sh-color-text-primary);
+}
+
+.close:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}

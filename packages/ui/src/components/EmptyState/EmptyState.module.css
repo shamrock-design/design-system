@@ -1,0 +1,58 @@
+.root {
+  display: flex;
+}
+
+/* md: centered region */
+.md {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sh-space-5);
+  padding: var(--sh-space-10) var(--sh-space-6);
+  text-align: center;
+}
+
+.md .copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sh-space-2);
+  max-width: 44ch;
+}
+
+.illustration {
+  display: flex;
+  justify-content: center;
+  color: var(--sh-color-text-faint);
+}
+
+.action {
+  display: flex;
+  flex: none;
+  align-items: center;
+}
+
+/* sm: table-cell-height inline strip */
+.sm {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--sh-space-4);
+  min-height: 26px;
+  padding: var(--sh-space-1) 0;
+}
+
+.sm .copy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--sh-space-2);
+  row-gap: 0;
+}
+
+.sm .title {
+  font-weight: var(--sh-font-weight-semibold);
+}
+
+/* no room for an illustration at cell height */
+.sm .illustration {
+  display: none;
+}

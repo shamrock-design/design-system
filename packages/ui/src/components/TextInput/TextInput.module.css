@@ -1,0 +1,117 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sh-space-2);
+  background: var(--sh-surface-solid);
+  border: 1px solid var(--sh-color-border-interactive);
+  border-radius: var(--sh-radius-none);
+  line-height: 1;
+  transition:
+    border-color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard),
+    box-shadow var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.root:hover:not(.disabled):not(:focus-within) {
+  border-color: var(--sh-color-border-hairline-strong);
+}
+
+.root:focus-within {
+  border-color: var(--sh-color-accent-base);
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}
+
+.invalid {
+  border-color: var(--sh-color-status-critical-base);
+}
+
+.invalid:hover:not(.disabled):not(:focus-within) {
+  border-color: var(--sh-color-status-critical-base);
+}
+
+.invalid:focus-within {
+  border-color: var(--sh-color-status-critical-base);
+  box-shadow: 0 0 0 3px var(--sh-color-status-critical-bg);
+}
+
+.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* sizes — heights match Button */
+.sm {
+  height: 26px;
+  padding: 0 var(--sh-space-3);
+  font-size: var(--sh-font-size-meta);
+}
+
+.md {
+  height: 30px;
+  padding: 0 var(--sh-space-4);
+  font-size: var(--sh-font-size-body);
+}
+
+.lg {
+  height: 36px;
+  padding: 0 var(--sh-space-4);
+  font-size: var(--sh-font-size-control);
+}
+
+.input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  letter-spacing: var(--sh-font-tracking-body);
+  color: var(--sh-color-text-primary);
+}
+
+.input::placeholder {
+  color: var(--sh-color-text-subtle);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  color: var(--sh-color-text-disabled);
+}
+
+.slot {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  color: var(--sh-color-text-tertiary);
+}
+
+.clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  border-radius: var(--sh-radius-none);
+  background: transparent;
+  color: var(--sh-color-text-tertiary);
+  cursor: pointer;
+  transition: color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.clear:hover {
+  color: var(--sh-color-text-primary);
+}
+
+.clear:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}
+
+.fullWidth {
+  display: flex;
+  width: 100%;
+}

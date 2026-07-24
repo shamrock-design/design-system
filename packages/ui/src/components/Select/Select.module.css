@@ -1,0 +1,176 @@
+/* trigger — dressed like TextInput: solid surface, hairline-strong edge */
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sh-space-3);
+  min-width: 0;
+  border: 1px solid var(--sh-color-border-hairline-strong);
+  border-radius: var(--sh-radius-none);
+  background: var(--sh-surface-solid);
+  color: var(--sh-color-text-primary);
+  font-family: inherit;
+  letter-spacing: var(--sh-font-tracking-body);
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    border-color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard),
+    box-shadow var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.trigger:hover:not([data-disabled]),
+.trigger[data-popup-open] {
+  border-color: var(--sh-color-border-interactive);
+}
+
+.trigger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}
+
+.trigger[data-disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.invalid,
+.invalid:hover:not([data-disabled]),
+.invalid[data-popup-open] {
+  border-color: var(--sh-color-status-critical-base);
+}
+
+.invalid:focus-visible {
+  box-shadow: 0 0 0 3px var(--sh-color-status-critical-bg);
+}
+
+/* sizes — same heights as Button/TextInput */
+.sm {
+  height: 26px;
+  padding: 0 var(--sh-space-3);
+  font-size: var(--sh-font-size-meta);
+}
+
+.md {
+  height: 30px;
+  padding: 0 var(--sh-space-4);
+  font-size: var(--sh-font-size-body);
+}
+
+.lg {
+  height: 36px;
+  padding: 0 var(--sh-space-4);
+  font-size: var(--sh-font-size-control);
+}
+
+.fullWidth {
+  display: flex;
+  width: 100%;
+}
+
+.value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.trigger[data-placeholder] .value {
+  color: var(--sh-color-text-subtle);
+}
+
+.chevron {
+  display: inline-flex;
+  flex: none;
+  color: var(--sh-color-text-tertiary);
+  transition: transform var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.trigger[data-popup-open] .chevron {
+  transform: rotate(180deg);
+}
+
+/* popup — overlay glass per docs/guidelines/elevation.md */
+.positioner {
+  z-index: var(--sh-z-modal);
+}
+
+.popup {
+  box-sizing: border-box;
+  min-width: var(--anchor-width);
+  max-height: var(--available-height);
+  padding: var(--sh-space-1) 0;
+  border: 1px solid var(--sh-color-border-hairline);
+  border-radius: var(--sh-radius-none);
+  background: var(--sh-surface-overlay);
+  box-shadow: var(--sh-shadow-1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow-y: auto;
+  transition: opacity var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.popup[data-starting-style],
+.popup[data-ending-style] {
+  opacity: 0;
+}
+
+/* item — check column + 2-line cell (label over gray description) */
+.item {
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr);
+  column-gap: var(--sh-space-2);
+  align-items: start;
+  padding: var(--sh-space-2) var(--sh-space-3);
+  color: var(--sh-color-text-primary);
+  font-size: var(--sh-font-size-body);
+  letter-spacing: var(--sh-font-tracking-body);
+  line-height: var(--sh-font-leading-tight);
+  cursor: default;
+  outline: none;
+}
+
+.item[data-highlighted] {
+  background: var(--sh-color-accent-subtle-bg);
+}
+
+.item[data-disabled] {
+  opacity: 0.45;
+}
+
+.indicator {
+  display: inline-flex;
+  margin-top: 1px;
+  color: var(--sh-color-accent-emphasis);
+  visibility: hidden;
+}
+
+.item[data-selected] .indicator {
+  visibility: visible;
+}
+
+.itemText {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.itemLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: var(--sh-font-weight-medium);
+}
+
+.item[data-selected] .itemLabel {
+  font-weight: var(--sh-font-weight-semibold);
+}
+
+.itemDescription {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--sh-color-text-tertiary);
+  font-size: var(--sh-font-size-meta);
+}

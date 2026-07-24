@@ -1,0 +1,77 @@
+.list {
+  margin: 0;
+}
+
+.pair {
+  min-width: 0;
+}
+
+.value {
+  margin: 0;
+  color: var(--sh-color-text-primary);
+  overflow-wrap: break-word;
+}
+
+/* vertical: key eyebrow above value, optional column grid */
+.vertical {
+  display: grid;
+  grid-template-columns: repeat(var(--sh-kv-columns, 1), minmax(0, 1fr));
+  column-gap: var(--sh-space-7);
+  row-gap: var(--sh-space-5);
+}
+
+.vertical .pair {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sh-space-1);
+}
+
+.vertical .value {
+  font-size: var(--sh-font-size-body);
+}
+
+/* inline: "key: value" pairs flowing with dot separators */
+.inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--sh-space-3);
+  row-gap: var(--sh-space-1);
+  font-size: var(--sh-font-size-meta);
+  line-height: var(--sh-font-leading-tight);
+}
+
+.inline .pair {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--sh-space-2);
+}
+
+.inline .pair + .pair::before {
+  content: "·";
+  color: var(--sh-color-text-faint);
+}
+
+.inline .value {
+  color: var(--sh-color-text-secondary);
+}
+
+.inlineKey {
+  color: var(--sh-color-text-tertiary);
+  white-space: nowrap;
+}
+
+.inlineKey::after {
+  content: ":";
+}
+
+/* machine values: timestamps, IDs, durations, counts */
+.mono {
+  font-family: var(--sh-font-family-machine);
+  color: var(--sh-color-text-machine);
+}
+
+/* cell-level absence per empty-states.md */
+.missing {
+  color: var(--sh-color-text-disabled);
+}

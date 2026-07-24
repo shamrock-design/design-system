@@ -1,0 +1,367 @@
+/* DataTable — solid surface (dense data area, no glass blur), hairline dividers, calm rows. */
+
+.wrapper {
+  background: var(--sh-surface-solid);
+  border: 1px solid var(--sh-color-border-hairline);
+  border-radius: var(--sh-radius-none);
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--sh-font-size-body);
+  letter-spacing: var(--sh-font-tracking-body);
+  color: var(--sh-color-text-primary);
+}
+
+/* ===== header ===== */
+
+.th {
+  height: 40px;
+  padding: 0 var(--sh-space-5);
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: var(--sh-font-size-micro);
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: var(--sh-font-tracking-caps);
+  text-transform: uppercase;
+  color: var(--sh-color-text-tertiary);
+  border-bottom: 1px solid var(--sh-color-border-hairline-strong);
+}
+
+.sortButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sh-space-2);
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  transition: color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.sortButton:hover {
+  color: var(--sh-color-text-primary);
+}
+
+.sortButton:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}
+
+.sortIcon {
+  font-size: var(--sh-font-size-micro);
+  color: var(--sh-color-text-faint);
+}
+
+.sortIconActive {
+  color: var(--sh-color-accent-emphasis);
+}
+
+/* ===== body cells ===== */
+
+.td {
+  padding: var(--sh-space-5);
+  vertical-align: middle;
+  border-bottom: 1px solid var(--sh-color-border-divider);
+}
+
+.compact .td {
+  padding: var(--sh-space-3) var(--sh-space-5);
+}
+
+.table tbody tr:last-child > td {
+  border-bottom: none;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+/* Machine face: timestamps, IDs, durations, counts. */
+.mono {
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-meta);
+  color: var(--sh-color-text-machine);
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 2-line cell: primary name over gray technical sub-label; lines truncate independently. */
+.cellLines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sh-space-1);
+  min-width: 0;
+}
+
+.cellLines > * {
+  min-width: 0;
+}
+
+.primaryLine {
+  font-weight: var(--sh-font-weight-medium);
+}
+
+.sub {
+  font-size: var(--sh-font-size-caption);
+  color: var(--sh-color-text-subtle);
+}
+
+.subMono {
+  font-family: var(--sh-font-family-machine);
+  color: var(--sh-color-text-machine);
+}
+
+/* ===== rows ===== */
+
+.row {
+  transition: background var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.row:hover {
+  background: var(--sh-color-accent-subtle-bg);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+/* ===== control columns (checkbox / chevron) ===== */
+
+.controlCell {
+  width: 36px;
+  box-sizing: border-box;
+}
+
+.checkboxCell {
+  padding-right: 0;
+}
+
+/* Minimal square checkbox, hand-rolled locally (to be unified with Checkbox later). */
+.checkbox {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  flex: none;
+  display: inline-grid;
+  place-content: center;
+  vertical-align: middle;
+  border: 1px solid var(--sh-color-border-interactive);
+  border-radius: var(--sh-radius-none);
+  background: var(--sh-surface-solid);
+  cursor: pointer;
+  transition:
+    background var(--sh-motion-duration-fast) var(--sh-motion-easing-standard),
+    border-color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.checkbox:hover {
+  border-color: var(--sh-color-accent-subtle-border);
+}
+
+.checkbox:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}
+
+.checkbox:checked,
+.checkbox:indeterminate {
+  background: var(--sh-color-accent-base);
+  border-color: var(--sh-color-accent-base);
+}
+
+.checkbox:checked::after {
+  content: "";
+  width: 7px;
+  height: 4px;
+  margin-top: -2px;
+  border-left: 2px solid var(--sh-color-accent-on-accent);
+  border-bottom: 2px solid var(--sh-color-accent-on-accent);
+  transform: rotate(-45deg);
+}
+
+.checkbox:indeterminate::after {
+  content: "";
+  width: 8px;
+  height: 2px;
+  background: var(--sh-color-accent-on-accent);
+}
+
+.checkbox:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ===== expandable rows ===== */
+
+.expandButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--sh-color-text-subtle);
+  transition:
+    color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard),
+    background var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.expandButton:hover {
+  color: var(--sh-color-text-primary);
+  background: var(--sh-color-accent-subtle-bg);
+}
+
+.expandButton:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}
+
+.chevron {
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-1px) rotate(-45deg); /* points right */
+  transition: transform var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.chevronOpen {
+  transform: translateY(-2px) rotate(45deg); /* points down */
+}
+
+.expandedCell {
+  padding: 0;
+  border-bottom: 1px solid var(--sh-color-border-divider);
+}
+
+.expandedPanel {
+  padding: var(--sh-space-6);
+  border-top: 1px solid var(--sh-color-border-divider);
+  animation: sh-rise var(--sh-motion-duration-base) var(--sh-motion-easing-standard);
+}
+
+/* ===== loading / empty ===== */
+
+.skeleton {
+  display: block;
+  height: 12px;
+  width: 70%;
+  max-width: 160px;
+  background: var(--sh-color-border-divider);
+  animation: sh-pulse 1.4s var(--sh-motion-easing-standard) infinite;
+}
+
+.skeleton.alignRight {
+  margin-left: auto;
+}
+
+.controlCell .skeleton {
+  width: 14px;
+}
+
+.emptyCell {
+  padding: var(--sh-space-9) var(--sh-space-6);
+  text-align: center;
+  color: var(--sh-color-text-subtle);
+  border-bottom: none;
+}
+
+/* ===== Pagination (own export; styled locally as ghost buttons) ===== */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--sh-space-4);
+  padding: var(--sh-space-4) 0;
+}
+
+.paginationTotal {
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-meta);
+  color: var(--sh-color-text-machine);
+  white-space: nowrap;
+}
+
+.paginationPages {
+  display: flex;
+  align-items: center;
+  gap: var(--sh-space-1);
+  margin-left: auto;
+}
+
+.pageButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sh-space-2);
+  min-width: 26px;
+  height: 26px;
+  padding: 0 var(--sh-space-3);
+  border: 1px solid transparent;
+  border-radius: var(--sh-radius-none);
+  background: transparent;
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-meta);
+  color: var(--sh-color-text-secondary);
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background var(--sh-motion-duration-fast) var(--sh-motion-easing-standard),
+    color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.pageButton:hover:not(:disabled) {
+  background: var(--sh-color-accent-subtle-bg);
+  color: var(--sh-color-text-primary);
+}
+
+.pageButton:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}
+
+.pageButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Prev/Next carry words, not machine values — UI face, ghost-Button weight. */
+.pageNavButton {
+  font-family: inherit;
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: var(--sh-font-tracking-body);
+}
+
+.pageCurrent {
+  background: var(--sh-color-accent-base);
+  color: var(--sh-color-accent-on-accent);
+}
+
+.pageCurrent:hover:not(:disabled) {
+  background: var(--sh-color-accent-emphasis);
+  color: var(--sh-color-accent-on-accent);
+}
+
+.paginationEllipsis {
+  min-width: 26px;
+  text-align: center;
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-meta);
+  color: var(--sh-color-text-faint);
+}

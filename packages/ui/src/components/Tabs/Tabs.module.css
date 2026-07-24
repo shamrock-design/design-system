@@ -1,0 +1,116 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sh-space-2);
+  border: 1px solid transparent;
+  border-radius: var(--sh-radius-none);
+  background: transparent;
+  color: var(--sh-color-text-secondary);
+  font-family: inherit;
+  font-weight: var(--sh-font-weight-medium);
+  letter-spacing: var(--sh-font-tracking-body);
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background var(--sh-motion-duration-fast) var(--sh-motion-easing-standard),
+    border-color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard),
+    color var(--sh-motion-duration-fast) var(--sh-motion-easing-standard);
+}
+
+.tab:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
+}
+
+.tab[data-disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* sizes (list-level, cascade to tabs) */
+.sm .tab {
+  height: 26px;
+  font-size: var(--sh-font-size-meta);
+}
+
+.md .tab {
+  height: 30px;
+  font-size: var(--sh-font-size-body);
+}
+
+/* underline variant: hairline baseline, active tab draws a 2px accent underline over it */
+.underline {
+  gap: var(--sh-space-5);
+  border-bottom: 1px solid var(--sh-color-border-hairline);
+}
+
+.underline .tab {
+  padding: 0 var(--sh-space-1);
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.underline .tab:hover:not([data-disabled]) {
+  color: var(--sh-color-text-primary);
+}
+
+.underline .tab[data-active] {
+  border-bottom-color: var(--sh-color-accent-base);
+  color: var(--sh-color-text-primary);
+}
+
+/* pill variant: transparent container, active tab is a solid card w/ hairline edge */
+.pill {
+  gap: var(--sh-space-1);
+}
+
+.pill .tab {
+  padding: 0 var(--sh-space-4);
+}
+
+.pill .tab:hover:not([data-disabled]):not([data-active]) {
+  background: var(--sh-surface-faint);
+  color: var(--sh-color-text-primary);
+}
+
+.pill .tab[data-active] {
+  background: var(--sh-surface-solid);
+  border-color: var(--sh-color-border-hairline);
+  color: var(--sh-color-text-primary);
+}
+
+/* count: machine-face counter pill (counts are machine values; pills may round) */
+.count {
+  flex: none;
+  padding: 2px var(--sh-space-2);
+  border: 1px solid var(--sh-color-border-hairline);
+  border-radius: var(--sh-radius-pill);
+  background: var(--sh-surface-faint);
+  color: var(--sh-color-text-tertiary);
+  font-family: var(--sh-font-family-machine);
+  font-size: var(--sh-font-size-micro);
+  font-weight: var(--sh-font-weight-regular);
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.tab[data-active] .count {
+  color: var(--sh-color-text-secondary);
+}
+
+.panel {
+  padding-top: var(--sh-space-5);
+}

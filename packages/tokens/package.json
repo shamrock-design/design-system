@@ -1,11 +1,15 @@
 {
   "name": "@shamrock-design/tokens",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "Shamrock design tokens — colorless semantic core + brand themes (CSS custom properties + typed JS)",
   "license": "UNLICENSED",
   "type": "module",
-  "sideEffects": ["*.css"],
-  "files": ["dist"],
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/js/tokens.d.ts",

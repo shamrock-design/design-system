@@ -1,10 +1,13 @@
 {
   "name": "@shamrock-design/icons",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "Shamrock icon set — hand-authored 24×24 line icons (currentColor, 1.5px stroke) as React components + raw SVG",
   "license": "UNLICENSED",
   "type": "module",
-  "files": ["dist", "svg"],
+  "files": [
+    "dist",
+    "svg"
+  ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",

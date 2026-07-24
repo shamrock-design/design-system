@@ -1,8 +1,8 @@
-# @shamrock-design/ui
+# @shamrock-design/icons
 
 ## 0.2.0
 
-### Minor Changes
+### Patch Changes
 
 - 9b8e1c0: Phase 3: shell, patterns, and charts.
 
@@ -17,22 +17,3 @@
   - **Timeline** — Gantt swimlane pattern: sticky time axis, time-anchored status bars, milestones, gate badges, ghost rows, NOW line, horizontal scroll.
   - **AI chat kit** — AgentOrb, ChatMessage, ThinkingBlock/ThinkingStep, SuggestionChips, RunRefChip, ChatComposer, and CompanionPanel (the assistant surface, composable inside AppShell or a Drawer).
   - **icons**: spark, send, history.
-
-### Patch Changes
-
-- a6083b1: Retire the "edge line" motif across components — the hard colored accent/status bars read as bootstrappy and made color feel decorative. Replaced with quieter, meaning-first treatments:
-
-  - **Card** / **KPITile**: the 3px top accent/status bar → a subtle accent/status **corner bloom** (a soft top-left tint, echoing the Aurora on glass).
-  - **Toast**: the 3px left status bar → gone; status now rides a **square** dot beside the title (sharp, per the radius-0 canon).
-  - **SegmentedControl** (selected segment) and **AppShell** (active nav item): the boxed border / 2px left accent bar → a lifted solid fill; the fill + accent text carry the selection.
-
-  No API changes — `Card`'s `accentBar` prop and `KPITile`'s `accentBar` behave the same, only the rendering changed.
-
-- Updated dependencies [9b8e1c0]
-  - @shamrock-design/tokens@0.2.0
-
-## 0.1.0
-
-### Minor Changes
-
-- 3496d93: Phase 2: the first fifteen components. Button, StatusBadge, Tag, TextInput, Checkbox, SegmentedControl, Tabs, Tooltip, Select, Modal (+ConfirmModal, +WizardModal), Toast (ToastProvider + useToast), DataTable (+Pagination), KPITile, KeyValueList, EmptyState — each with SPEC.md, colocated stories (Default + AllVariants), and tests (79 passing). Interactive components build on @base-ui/react v1.6; statics are hand-rolled. All styling via --sh-\* semantic tokens, sharp corners, canonical 7-value status enum throughout.

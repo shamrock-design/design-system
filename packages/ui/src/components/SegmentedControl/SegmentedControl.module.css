@@ -50,12 +50,12 @@
   color: var(--sh-color-text-primary);
 }
 
-/* selected: a lifted solid fill, not a boxed outline — the fill + subtle shadow
-   signify selection without the bootstrappy border. */
+/* selected: filled with the theme accent — green/violet under those themes, dark
+   ink (#1A1B18) under neutral — so it reads clearly against the faint track. A
+   white/solid fill was invisible on light surfaces. */
 .segment[data-pressed] {
-  background: var(--sh-surface-solid);
-  color: var(--sh-color-text-primary);
-  box-shadow: var(--sh-shadow-1);
+  background: var(--sh-color-accent-base);
+  color: var(--sh-color-accent-on-accent);
 }
 
 .segment:focus-visible {

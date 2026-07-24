@@ -51,8 +51,7 @@ function CardRoot({
   const classes = [
     styles.card,
     styles[variant],
-    accentBar === true && styles.accentBar,
-    typeof accentBar === "string" && styles.statusBar,
+    accentBar && styles.accentGlow,
     isInteractive && styles.interactive,
     className,
   ]

@@ -27,14 +27,16 @@
   background: var(--sh-surface-faint);
 }
 
-/* top color bar */
-.accentBar {
-  border-top: 3px solid var(--sh-color-accent-base);
-}
-
-/* stage color-bar (`.pcard` pattern) — var set from the Status prop */
-.statusBar {
-  border-top: 3px solid var(--sh-card-accent);
+/* accent / status corner bloom — replaces the old top edge-bar. A soft tint of the
+   accent (or the Status prop) anchored top-left, echoing the Aurora catching the
+   glass. Color still signifies; the hard line is gone. Declared after the surface
+   classes so this background-image wins over their `background` shorthand. */
+.accentGlow {
+  background-image: radial-gradient(
+    125% 90% at 0% 0%,
+    color-mix(in srgb, var(--sh-card-accent, var(--sh-color-accent-base)) 16%, transparent) 0%,
+    transparent 46%
+  );
 }
 
 /* interactive: hover lift per elevation.md */

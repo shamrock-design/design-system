@@ -13,8 +13,13 @@
   text-align: left;
 }
 
-.accentBar {
-  border-top: 3px solid var(--sh-color-accent-base);
+/* accent corner bloom — a soft brand tint anchored top-left, no edge-bar. */
+.accentGlow {
+  background-image: radial-gradient(
+    125% 90% at 0% 0%,
+    color-mix(in srgb, var(--sh-color-accent-base) 14%, transparent) 0%,
+    transparent 46%
+  );
 }
 
 .header {

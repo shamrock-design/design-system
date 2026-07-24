@@ -17,7 +17,6 @@
 .toast {
   position: relative;
   border: 1px solid var(--sh-color-border-hairline-strong);
-  border-left: 3px solid var(--sh-toast-status-base);
   border-radius: var(--sh-radius-none);
   background: var(--sh-surface-solid);
   box-shadow: var(--sh-shadow-1);
@@ -43,12 +42,13 @@
   gap: var(--sh-space-3);
 }
 
-/* status dot — same 6px orb as StatusBadge */
+/* square status marker — sharp, per the radius-0 canon; carries the signal now
+   that the left color-bar is gone. Pairs with the title (dot + label). */
 .dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   flex: none;
-  border-radius: var(--sh-radius-circle);
+  border-radius: var(--sh-radius-none);
   background: var(--sh-toast-status-base);
 }
 

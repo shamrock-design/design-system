@@ -150,12 +150,12 @@
   box-shadow: 0 0 0 3px var(--sh-color-accent-focus-ring);
 }
 
-/* active = solid surface + accent-emphasis text + 2px left accent bar */
+/* active = solid surface fill + accent-emphasis text (no edge bar — the fill and
+   accent text carry the selection, consistent with the segmented control) */
 .navItemActive {
   background: var(--sh-surface-solid);
   color: var(--sh-color-accent-emphasis);
   font-weight: var(--sh-font-weight-semibold);
-  box-shadow: inset 2px 0 0 var(--sh-color-accent-base);
 }
 
 .navItemIcon {

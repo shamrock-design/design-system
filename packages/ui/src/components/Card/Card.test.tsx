@@ -23,14 +23,14 @@ describe("Card", () => {
     expect(card.style.getPropertyValue("--sh-card-padding")).toBe("var(--sh-space-0)");
   });
 
-  it("accentBar=true uses the accent class; a Status value sets the status color var", () => {
+  it("accentBar renders the accent glow; a Status value sets the status color var", () => {
     const { rerender } = render(
       <Card data-testid="card" accentBar>
         A
       </Card>,
     );
     let card = screen.getByTestId("card");
-    expect(card.className).toMatch(/accentBar/);
+    expect(card.className).toMatch(/accentGlow/);
 
     rerender(
       <Card data-testid="card" accentBar="critical">
@@ -38,7 +38,7 @@ describe("Card", () => {
       </Card>,
     );
     card = screen.getByTestId("card");
-    expect(card.className).toMatch(/statusBar/);
+    expect(card.className).toMatch(/accentGlow/);
     expect(card.style.getPropertyValue("--sh-card-accent")).toBe("var(--sh-color-status-critical-base)");
   });
 

@@ -48,7 +48,7 @@ export function KPITile({ label, value, delta, icon, accentBar = true, onClick, 
     );
   }
 
-  const classes = [styles.tile, accentBar && styles.accentBar, onClick && styles.interactive, className]
+  const classes = [styles.tile, accentBar && styles.accentGlow, onClick && styles.interactive, className]
     .filter(Boolean)
     .join(" ");
 

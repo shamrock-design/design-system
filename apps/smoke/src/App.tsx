@@ -3,12 +3,13 @@ import { SegmentedControl, ToastProvider } from "@shamrock-design/ui";
 import { Benchmark } from "./Benchmark";
 import { Flagship } from "./Flagship";
 import { Foundations } from "./Foundations";
+import { Spnr } from "./spnr/Spnr";
 
 const THEMES = ["neutral", "clover", "violet"] as const;
 
 export function App() {
   const [theme, setTheme] = useState<string>("clover");
-  const [page, setPage] = useState("benchmark");
+  const [page, setPage] = useState("spnr");
 
   return (
     <ToastProvider>
@@ -30,6 +31,7 @@ export function App() {
         <SegmentedControl
           size="sm"
           options={[
+            { value: "spnr", label: "SPNR" },
             { value: "benchmark", label: "Benchmark" },
             { value: "flagship", label: "Flagship" },
             { value: "foundations", label: "Foundations" },
@@ -49,7 +51,15 @@ export function App() {
           aria-label="Theme"
         />
       </div>
-      {page === "benchmark" ? <Benchmark /> : page === "flagship" ? <Flagship /> : <Foundations />}
+      {page === "spnr" ? (
+        <Spnr />
+      ) : page === "benchmark" ? (
+        <Benchmark />
+      ) : page === "flagship" ? (
+        <Flagship />
+      ) : (
+        <Foundations />
+      )}
     </ToastProvider>
   );
 }

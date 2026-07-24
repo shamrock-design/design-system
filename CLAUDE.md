@@ -2,6 +2,10 @@
 
 Token-driven, **color-agnostic** design system for the Shamrock/3Frames ecosystem: internal products + white-labeled client solutions. Storybook is the workshop; packages publish to GitHub Packages.
 
+## Coordination (multi-agent — read first)
+
+More than one agent/session may work here at once. **Before editing anything, read [`docs/coordination.md`](docs/coordination.md), claim your scope there, and never touch a path inside another agent's active claim.** Parallel work is decomposed and assigned by whoever holds the Orchestrator role on that board — don't start overlapping work independently. Re-read shared barrels (`packages/ui/src/index.ts`, `packages/charts/src/index.ts`, `apps/smoke/src/App.tsx`) right before writing them; they change under you.
+
 ## Commands
 
 - `pnpm turbo build` — build everything (tokens → ui/icons → apps)

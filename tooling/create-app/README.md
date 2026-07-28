@@ -1,11 +1,11 @@
-# create-shamrock-app
+# @shamrockai/create-app
 
 Scaffold a new app on the **Shamrock Design System** in one command — auth, theme, fonts, components, lint guardrails, and AI-agent rules, all wired.
 
 ```bash
-npm create shamrock-app@latest my-app
+npm create @shamrockai/app my-app
 # or
-pnpm create shamrock-app my-app --theme clover
+pnpm create @shamrockai/app my-app --theme clover
 ```
 
 Then:
@@ -35,9 +35,11 @@ pnpm dev
 
 ## Publishing this tool
 
-`create-shamrock-app` is published to the **public** npm registry (it's just scaffolding glue — no design-system code) so `npm create` works before a token exists. The four `@shamrock-design/*` packages it installs remain private on GitHub Packages.
+`@shamrockai/create-app` is published to the **public** npm registry (it's just scaffolding glue — no design-system code) so `npm create` works before a token exists. The four `@shamrock-design/*` packages it installs remain private on GitHub Packages.
 
 ```bash
 cd tooling/create-app
-npm publish            # requires an npmjs.org account with publish rights
+npm login                       # your npmjs.org account (org: shamrockai)
+npm publish --dry-run           # optional: preview the file list
+npm publish                     # publishConfig.access is already "public"
 ```

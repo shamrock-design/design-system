@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-// create-shamrock-app — scaffold a new app on the Shamrock Design System.
+// @shamrockai/create-app — scaffold a new app on the Shamrock Design System.
 //
-//   npm create shamrock-app@latest my-app
-//   pnpm create shamrock-app my-app --theme clover
+//   npm create @shamrockai/app my-app
+//   pnpm create @shamrockai/app my-app --theme clover
 //
 // What it does, so the developer doesn't have to:
 //   1. Authenticates to GitHub Packages using the GitHub CLI (`gh auth token`) —
@@ -55,11 +55,11 @@ function parseArgs(argv) {
 
 function printHelp() {
   console.log(`
-${paint("create-shamrock-app", c.bold)} — scaffold an app on the Shamrock Design System
+${paint("@shamrockai/create-app", c.bold)} — scaffold an app on the Shamrock Design System
 
 ${paint("Usage", c.dim)}
-  npm create shamrock-app@latest [dir] [options]
-  pnpm create shamrock-app [dir] [options]
+  npm create @shamrockai/app [dir] [options]
+  pnpm create @shamrockai/app [dir] [options]
 
 ${paint("Options", c.dim)}
   --theme <name>   Brand theme: ${THEMES.join(" | ")}  (default: ${DEFAULT_THEME})

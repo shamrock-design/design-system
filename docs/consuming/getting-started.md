@@ -5,8 +5,8 @@ The fastest way to build on the Shamrock Design System is to scaffold a new app 
 ## Quickstart — a new app in one command
 
 ```bash
-npm create shamrock-app@latest my-app
-# or:  pnpm create shamrock-app my-app --theme clover
+npm create @shamrockai/app my-app
+# or:  pnpm create @shamrockai/app my-app --theme clover
 ```
 
 Then:

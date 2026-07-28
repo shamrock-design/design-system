@@ -2,3 +2,7 @@ packages:
   - "packages/*"
   - "apps/*"
   - "tooling/*"
+  # The public scaffolder publishes to npmjs on its own cadence, not through the
+  # GitHub Packages release pipeline — keep it out of the workspace so
+  # `changeset publish` never tries (and fails, unauthenticated) to publish it.
+  - "!tooling/create-app"

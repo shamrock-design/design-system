@@ -1,4 +1,4 @@
-import { render, screen, waitFor, waitForElementToBeRemoved } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import { ToastProvider, useToast, type ToastOptions } from "./Toast";
@@ -59,7 +59,9 @@ describe("Toast", () => {
     await user.click(screen.getByRole("button", { name: "Fire" }));
     await screen.findByText("Ephemeral");
 
-    await waitForElementToBeRemoved(() => screen.queryByText("Ephemeral"), { timeout: 3000 });
+    // Robust against the auto-dismiss firing before this wait starts (durationMs is
+    // tiny): assert absence rather than requiring the element to still be present.
+    await waitFor(() => expect(screen.queryByText("Ephemeral")).not.toBeInTheDocument(), { timeout: 3000 });
   });
 
   it("stacks multiple toasts in the viewport", async () => {

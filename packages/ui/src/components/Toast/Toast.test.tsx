@@ -55,12 +55,14 @@ describe("Toast", () => {
 
   it("auto-dismisses after durationMs", async () => {
     const user = userEvent.setup();
-    renderWithProvider(<Fire options={{ title: "Ephemeral", durationMs: 50 }} />);
+    // durationMs must comfortably exceed the click/flush latency, or the toast can
+    // auto-dismiss before findByText ever polls it — flaky on a loaded CI runner
+    // (a 50ms toast vanished before the query ran). 1s keeps it reliably observable;
+    // we then wait for it to clear, tolerating it already being gone.
+    renderWithProvider(<Fire options={{ title: "Ephemeral", durationMs: 1000 }} />);
     await user.click(screen.getByRole("button", { name: "Fire" }));
-    await screen.findByText("Ephemeral");
+    expect(await screen.findByText("Ephemeral")).toBeInTheDocument();
 
-    // Robust against the auto-dismiss firing before this wait starts (durationMs is
-    // tiny): assert absence rather than requiring the element to still be present.
     await waitFor(() => expect(screen.queryByText("Ephemeral")).not.toBeInTheDocument(), { timeout: 3000 });
   });
 

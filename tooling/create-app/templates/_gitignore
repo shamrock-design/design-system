@@ -1,0 +1,10 @@
+node_modules
+dist
+dist-ssr
+*.local
+
+# Contains your GitHub Packages auth token — never commit it.
+.npmrc
+
+.DS_Store
+*.log

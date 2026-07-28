@@ -1,0 +1,28 @@
+{
+  "name": "@shamrock-design/eslint-config",
+  "version": "0.1.0",
+  "description": "Shareable ESLint flat config that enforces the Shamrock canon in .ts/.tsx — no hardcoded hex colors, no magic px — on top of a React + TypeScript baseline.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "eslint": ">=9"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.18.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "globals": "^15.14.0",
+    "typescript-eslint": "^8.21.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}

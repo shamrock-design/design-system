@@ -1,0 +1,25 @@
+{
+  "name": "@shamrock-design/stylelint-config",
+  "version": "0.1.0",
+  "description": "Shareable Stylelint config that enforces the Shamrock canon in CSS / CSS Modules — token-only colors & spacing, radius 0, no hex.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "stylelint": ">=16"
+  },
+  "dependencies": {
+    "stylelint-config-standard": "^37.0.0",
+    "stylelint-declaration-strict-value": "^1.10.11"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}

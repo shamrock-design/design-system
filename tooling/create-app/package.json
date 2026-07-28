@@ -1,0 +1,29 @@
+{
+  "name": "create-shamrock-app",
+  "version": "0.1.0",
+  "description": "Scaffold a new app wired to the Shamrock Design System — GitHub Packages auth, brand theme, fonts, components, lint guardrails, and AI-agent rules, in one command.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "create-shamrock-app": "bin/index.js"
+  },
+  "files": [
+    "bin",
+    "templates",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "shamrock",
+    "design-system",
+    "scaffold",
+    "create",
+    "react",
+    "vite"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

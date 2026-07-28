@@ -1,0 +1,31 @@
+{
+  "name": "{{APP_NAME}}",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . && stylelint \"src/**/*.css\" --allow-empty-input",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@shamrock-design/charts": "^0.2.0",
+    "@shamrock-design/icons": "^0.2.0",
+    "@shamrock-design/tokens": "^0.2.0",
+    "@shamrock-design/ui": "^0.2.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@shamrock-design/eslint-config": "^0.1.0",
+    "@shamrock-design/stylelint-config": "^0.1.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.18.0",
+    "stylelint": "^16.13.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7"
+  }
+}

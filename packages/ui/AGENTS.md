@@ -47,7 +47,7 @@ export function Page() {
 }
 ```
 
-Card surface: `background: var(--sh-surface-card); border: 1px solid var(--sh-color-border-hairline); backdrop-filter: blur(12px);` — optionally `border-top: 3px solid var(--sh-color-accent-base)`.
+Card surface: `background: var(--sh-surface-card); border: 1px solid var(--sh-color-border-hairline); backdrop-filter: blur(12px);`. **No edge-line** — do not add a colored top/left accent bar or border stripe (that motif was removed from the system). To signal on a card, use a `StatusBadge`, a square status dot, or the `<Card>` `accentBar="<status>"` prop, which renders a subtle corner bloom, never a hard 3px stripe.
 
 ## If a component you need doesn't exist yet
 
